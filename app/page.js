@@ -7,10 +7,12 @@ import Faq from "./components/Faq";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import StickyMobileCTA from "./components/StickyMobileCTA";
+import PageIntro from "./components/PageIntro";
 
 export default function Home() {
   return (
     <main>
+      <PageIntro />
       <Header />
       <Hero />
       <Plans />

@@ -116,16 +116,13 @@ export default function ContactForm() {
                     <Phone size={18} />
                   </span>
                   <span className="fast-path-label">
-                    <strong>{advisor.phone}</strong>
+                    <strong>Call us</strong>
                     <span>{t(contactFormCopy.callSub, lang)}</span>
                   </span>
                   <ArrowRight size={16} style={{ marginLeft: "auto", opacity: 0.35 }} aria-hidden="true" />
                 </a>
               )}
             </nav>
-            <div className="contact-or-divider" aria-hidden="true">
-              {t(contactFormCopy.orDivider, lang)}
-            </div>
           </>
         )}
       </div>

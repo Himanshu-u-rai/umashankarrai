@@ -139,11 +139,10 @@ main {
   justify-content: space-between;
   gap: 12px;
   padding: 0 14px;
-  border: 0;
-  border-bottom: 1px solid var(--line);
+  border: none;
   border-radius: 0;
   background: transparent;
-  transition: box-shadow 180ms ease, border-color 180ms ease;
+  transition: box-shadow 280ms ease, border-color 280ms ease;
 }
 
 /* backdrop-filter lives on ::before so it does NOT create a containing block
@@ -153,18 +152,20 @@ main {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(251, 248, 242, 0.92);
-  backdrop-filter: blur(14px);
+  background: transparent;
+  backdrop-filter: none;
   border-radius: inherit;
-  transition: background 180ms ease;
+  transition: background 280ms ease, backdrop-filter 280ms ease;
 }
 
 .site-header.is-scrolled {
-  box-shadow: 0 6px 20px rgba(14, 19, 32, 0.06);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(14, 19, 32, 0.05);
 }
 
 .site-header.is-scrolled::before {
-  background: rgba(251, 248, 242, 0.98);
+  background: rgba(251, 248, 242, 0.94);
+  backdrop-filter: blur(14px);
 }
 
 .brand-lockup,
@@ -191,8 +192,9 @@ main {
 .brand-lockup strong,
 .footer-brand span {
   display: block;
-  font-weight: 850;
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
   line-height: 1.1;
 }
 
@@ -275,6 +277,21 @@ main {
    "Talk now" CTA is redundant and crowds the bar. Reveal it only on desktop. */
 .header-talk {
   display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 160ms ease;
+}
+.header-talk:hover {
+  background: var(--lic-blue);
+  color: #fff;
 }
 
 /* Language toggle pill (EN / हिं) — used in header right side. */
@@ -327,6 +344,11 @@ main {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.irda-badge--link {
+  text-decoration: none;
+  cursor: pointer;
+}
+.irda-badge--link:hover { opacity: 0.8; }
 
 /* ==========================================================================
    Hero (base = single column mobile)
@@ -528,11 +550,7 @@ main {
 
 /* Saffron-to-blue ribbon divider — drop between sections. */
 .section-ribbon {
-  height: 12px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--lic-saffron) 0%, var(--gold) 50%, var(--lic-blue) 100%);
-  border: 0;
-  margin: 0;
+  display: none;
 }
 
 /* ==========================================================================
@@ -1519,68 +1537,7 @@ main {
 /* ==========================================================================
    Footer
    ========================================================================== */
-.site-footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  padding: 48px 16px;
-  background: var(--ink);
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.site-footer p {
-  max-width: 500px;
-  color: rgba(255, 255, 255, 0.66);
-  line-height: 1.65;
-  margin-top: 14px;
-}
-
-.footer-brand {
-  color: white;
-  font-weight: 900;
-}
-
-.site-footer nav,
-.footer-contact,
-.footer-source {
-  display: grid;
-  align-content: start;
-  gap: 10px;
-}
-
-.site-footer a {
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 800;
-}
-
-.footer-source span,
-.site-footer small {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.footer-source a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.footer-contact a {
-  width: max-content;
-  max-width: 100%;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.site-footer small {
-  grid-column: 1 / -1;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 20px;
-}
+/* Footer styles are co-located in app/components/Footer.js */
 
 /* ==========================================================================
    Sticky mobile CTA bar (Call · WhatsApp · Form)
@@ -1743,61 +1700,44 @@ main {
     display: none;
   }
 
-  /* Header: floating pill returns. */
+  /* Header: stays full-width, flush to top, square — no floating pill. */
   .site-header {
-    top: 18px;
-    left: 50%;
-    right: auto;
-    width: min(1180px, calc(100% - 32px));
-    height: auto;
-    transform: translateX(-50%);
-    padding: 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.36);
-    border-radius: 999px;
-    background: transparent;
-    border-bottom-color: rgba(255, 255, 255, 0.36);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: none;
+    padding: 0 32px;
+    border-radius: 0;
+    border: none;
   }
 
   .site-header::before {
-    background: rgba(251, 248, 242, 0.72);
-    backdrop-filter: blur(18px);
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
   }
 
   .site-header.is-scrolled {
-    border-color: var(--line);
-    box-shadow: 0 10px 36px rgba(14, 19, 32, 0.08);
+    box-shadow: 0 4px 24px rgba(14, 19, 32, 0.06);
   }
 
   .site-header.is-scrolled::before {
-    background: rgba(251, 248, 242, 0.94);
+    background: rgba(251, 248, 242, 0.96);
+    backdrop-filter: blur(18px);
   }
 
   .menu-toggle {
     display: none;
   }
 
+  .header-talk {
+    display: inline-flex;
+  }
+
+  /* Desktop: hide the nav sheet — only brand + HindiToggle + Talk Now show. */
   .site-nav {
-    position: static;
-    inset: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-    padding: 0;
-    background: transparent;
-    backdrop-filter: none;
-    overflow: visible;
-  }
-
-  .site-nav a {
-    min-height: auto;
-    border-radius: 999px;
-    font-size: 14px;
-    padding: 10px 14px;
-  }
-
-  .site-nav .nav-cta {
-    margin-left: 4px;
+    display: none;
   }
 
   /* Hero: two-column copy + portrait, full-height. */

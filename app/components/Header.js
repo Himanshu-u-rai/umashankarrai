@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { advisor, hasWhatsApp, headerCopy, whatsappLink } from "../data/siteData";
 import { t } from "../data/i18n";
@@ -29,18 +28,10 @@ export default function Header() {
     ? whatsappLink(t(headerCopy.whatsappGreeting, lang) || "Hello")
     : "#contact";
 
-  const irdaPending = advisor.irdaCode.includes("XXXX");
-
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <a className="brand-lockup" href="#top" aria-label="Go to top" onClick={closeMenu}>
-        <span className="advisor-mark" aria-hidden="true">
-          <Image src="/brand/advisor-mark.svg" alt="" width={32} height={32} />
-        </span>
-        <span>
-          <strong>{advisor.name}</strong>
-          <small>{t(advisor.title, lang)}</small>
-        </span>
+        <strong>{advisor.name}</strong>
       </a>
 
       <div className="header-actions">
@@ -87,12 +78,6 @@ export default function Header() {
         >
           {t(headerCopy.talkNow, lang)}
         </a>
-        {!irdaPending && (
-          <span className="irda-badge">
-            <span className="irda-badge-label">IRDA</span>
-            <span className="irda-badge-code">{advisor.irdaCode}</span>
-          </span>
-        )}
       </nav>
     </header>
   );

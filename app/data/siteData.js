@@ -236,16 +236,23 @@ export const advisor = {
   servingSince: SERVING_SINCE,
   // Derived helper — components can also recompute live if needed.
   yearsExperience: new Date().getFullYear() - SERVING_SINCE,
-  irdaCode: "IRDA-XXXXXX", // TODO(owner)
-  city: "TODO(owner)",
-  state: "TODO(owner)",
-  phone: "+91XXXXXXXXXX", // TODO(owner)
-  whatsapp: "+91XXXXXXXXXX", // TODO(owner)
+  irdaCode: "018640617",
+  irdaAuthority: "Insurance Regulatory and Development Authority (IRDA)",
+  licenceType: "Insurance Agent under Part II of Insurance Act, 1938",
+  licAgentCode: "LIC1599581C",
+  city: "Gandhidham",
+  state: "Gujarat",
+  phone: "+919427201408",
+  whatsapp: "+919427201408",
   email: "lic.umashanker@gmail.com",
   languages: ["Hindi", "English"], // TODO(owner) — add Bhojpuri/Marathi if applicable
   branch: {
-    en: "LIC Branch — TODO(owner)",
-    hi: "एलआईसी शाखा — TODO(owner)",
+    en: "Gandhidham (181C)",
+    hi: "गांधीधाम (181C)",
+  },
+  division: {
+    en: "Rajkot",
+    hi: "राजकोट",
   },
 };
 
@@ -675,8 +682,8 @@ export const plansSectionCopy = {
     hi: "रणनीतिक जीवन लक्ष्यों के लिए रणनीतिक योजनाएँ।",
   },
   intro: {
-    en: "Selecting the right LIC policy is more than picking a name. Choose your primary objective and we will configure the exact cover, premium, and benefit illustration that fits your life.",
-    hi: "सही एलआईसी पॉलिसी चुनना केवल नाम चुनने से अधिक है। अपना प्राथमिक उद्देश्य चुनें और हम आपके जीवन के अनुरूप सटीक कवर, प्रीमियम और लाभ का दृष्टांत तैयार करेंगे।",
+    en: "Pick your goal — we'll match the right plan to it.",
+    hi: "अपना लक्ष्य चुनें — हम सही योजना से मिलाएंगे।",
   },
 };
 
