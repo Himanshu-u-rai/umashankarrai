@@ -1,0 +1,273 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+        - generic [ref=e9]: Consultant.
+      - navigation [ref=e10]:
+        - link "Plans" [ref=e11] [cursor=pointer]:
+          - /url: "#plans"
+        - link "Calculator" [ref=e12] [cursor=pointer]:
+          - /url: "#calculator"
+        - link "FAQ" [ref=e13] [cursor=pointer]:
+          - /url: "#faq"
+        - button "Get Quote" [ref=e14] [cursor=pointer]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - img [ref=e21]
+          - text: SPECIALIZED LIC CONSULTING
+        - heading "Architecting Legacies Through Strategic Wealth" [level=1] [ref=e23]:
+          - text: Architecting Legacies Through
+          - generic [ref=e24]: Strategic Wealth
+        - paragraph [ref=e25]: Experience elite financial planning with Umashankar Rai. We provide data-driven insurance solutions tailored for wealth preservation and multigenerational growth.
+        - generic [ref=e26]:
+          - button "Secure Your Future" [ref=e27] [cursor=pointer]:
+            - text: Secure Your Future
+            - img [ref=e28]
+          - button "Explore Plans" [ref=e30] [cursor=pointer]
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - text: CERTIFIED PARTNER
+          - generic [ref=e36]:
+            - img [ref=e37]
+            - text: 5,000+ CLIENTS
+      - generic [ref=e43]:
+        - img "Umashankar Rai" [ref=e44]
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Umashankar Rai
+          - paragraph [ref=e47]: Principal Wealth Consultant
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - img [ref=e55]
+        - generic [ref=e59]: ₹50Cr+
+        - generic [ref=e60]: Life Coverage
+        - generic [ref=e61]: Total sum assured protected
+      - generic [ref=e62]:
+        - img [ref=e64]
+        - generic [ref=e66]: 1,200+
+        - generic [ref=e67]: Happy Clients
+        - generic [ref=e68]: Families secured nationwide
+      - generic [ref=e69]:
+        - img [ref=e71]
+        - generic [ref=e74]: 99.7%
+        - generic [ref=e75]: Claim Ratio
+        - generic [ref=e76]: LIC industry leading settlement
+      - generic [ref=e77]:
+        - img [ref=e79]
+        - generic [ref=e81]: 18 Yrs
+        - generic [ref=e82]: Experience
+        - generic [ref=e83]: Professional financial consulting
+    - generic [ref=e85]:
+      - heading "Elite Insurance Portfolio" [level=2] [ref=e87]
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - button "Endowment" [ref=e90] [cursor=pointer]:
+            - img [ref=e92]
+            - generic [ref=e95]: Endowment
+          - button "Whole Life" [ref=e96] [cursor=pointer]:
+            - img [ref=e98]
+            - generic [ref=e100]: Whole Life
+          - button "Money Back" [ref=e101] [cursor=pointer]:
+            - img [ref=e103]
+            - generic [ref=e106]: Money Back
+          - button "Term Insurance" [ref=e107] [cursor=pointer]:
+            - img [ref=e109]
+            - generic [ref=e111]: Term Insurance
+        - generic [ref=e113]:
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: "# 936"
+            - heading "Jeevan Labh" [level=4] [ref=e116]
+            - generic [ref=e117]: High Returns
+          - generic [ref=e118] [cursor=pointer]:
+            - generic [ref=e119]: "# 915"
+            - heading "New Jeevan Anand" [level=4] [ref=e120]
+            - generic [ref=e121]: Double Cover
+          - generic [ref=e122] [cursor=pointer]:
+            - generic [ref=e123]: "# 933"
+            - heading "Jeevan Lakshya" [level=4] [ref=e124]
+            - generic [ref=e125]: Goal Secure
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]: "# 914"
+            - heading "New Endowment" [level=4] [ref=e128]
+            - generic [ref=e129]: Fixed Income
+          - generic [ref=e130] [cursor=pointer]:
+            - generic [ref=e131]: "# 860"
+            - heading "Bima Jyoti" [level=4] [ref=e132]
+            - generic [ref=e133]: Wealth Growth
+    - generic [ref=e136]:
+      - generic [ref=e138]:
+        - img "Umashankar Rai Consulting" [ref=e139]
+        - generic [ref=e140]:
+          - heading "Mission Driven" [level=5] [ref=e141]
+          - paragraph [ref=e142]: To provide financial literacy and secure insurance solutions that protect generations.
+      - generic [ref=e144]:
+        - generic [ref=e145]: Our Heritage
+        - heading "Years of Trust. Decades of Expertise." [level=2] [ref=e146]
+        - paragraph [ref=e147]: Umashankar Rai has been at the forefront of financial consulting, helping over 5,000 families achieve their dreams through strategic LIC insurance planning and personalized wealth management solutions.
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - img [ref=e151]
+              - generic [ref=e153]: Certified MDRT
+            - paragraph [ref=e154]: Recognized globally for excellence in the finance industry.
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - img [ref=e157]
+              - generic [ref=e159]: 25+ Years
+            - paragraph [ref=e160]: A legacy of stability and unwavering client service since 1999.
+        - button "Read Full Journey" [ref=e161] [cursor=pointer]
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - img [ref=e167]
+          - text: Smart Planning
+        - heading "Visualize Your Future Wealth." [level=2] [ref=e169]
+        - paragraph [ref=e170]: Use our professional forecasting tool to estimate the maturity value of your disciplined investments in LIC strategic plans.
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - generic [ref=e174]: Monthly Investment (₹)
+              - generic [ref=e175]: ₹5,000
+            - slider [ref=e176]: "5000"
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e179]: Duration (Years)
+              - generic [ref=e180]: 20 Yrs
+            - slider [ref=e181]: "20"
+      - generic [ref=e182]:
+        - heading "Projected Growth" [level=4] [ref=e183]:
+          - img [ref=e184]
+          - text: Projected Growth
+        - generic [ref=e187]:
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: Total Investment
+            - paragraph [ref=e190]: ₹1,200,000
+          - generic [ref=e192]:
+            - paragraph [ref=e193]: Estimated Maturity Value
+            - paragraph [ref=e194]: ₹2,745,718*
+            - paragraph [ref=e195]:
+              - img [ref=e196]
+              - text: "*Estimated @8% returns. Actual values depend on plan bonuses."
+        - button "Get Detailed Illustration" [ref=e198] [cursor=pointer]
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - heading "Why Trust Our Consulting?" [level=2] [ref=e202]
+        - paragraph [ref=e203]: We bridge the gap between complex policies and your peace of mind.
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - img [ref=e207]
+          - heading "LIC Authorized" [level=4] [ref=e210]
+          - paragraph [ref=e211]: Registered LIC consultant ensuring 100% authenticity.
+        - generic [ref=e212]:
+          - img [ref=e214]
+          - heading "Secure Planning" [level=4] [ref=e217]
+          - paragraph [ref=e218]: Data-driven financial strategies tailored for your goals.
+        - generic [ref=e219]:
+          - img [ref=e221]
+          - heading "Lifetime Support" [level=4] [ref=e224]
+          - paragraph [ref=e225]: Personalized assistance from premium payment to claim settlement.
+    - generic [ref=e229]:
+      - generic [ref=e230]:
+        - heading "Secure Your Legacy Today." [level=2] [ref=e231]
+        - paragraph [ref=e232]: Ready to build a robust financial foundation? Contact us for a personalized consultation and a bespoke policy illustration.
+        - generic [ref=e233]:
+          - generic [ref=e234]:
+            - img [ref=e236]
+            - generic [ref=e239]: Free Comprehensive Financial Needs Analysis
+          - generic [ref=e240]:
+            - img [ref=e242]
+            - generic [ref=e245]: Complete Paperwork & Doorstep Service
+          - generic [ref=e246]:
+            - img [ref=e248]
+            - generic [ref=e251]: Hassle-free Annual Policy Reviews
+        - generic [ref=e252]:
+          - paragraph [ref=e253]: Prefer a call?
+          - generic [ref=e254]:
+            - img [ref=e256]
+            - generic [ref=e260]:
+              - paragraph [ref=e261]: +91 98765 43210
+              - paragraph [ref=e262]: Available Mon - Sat, 10AM - 7PM
+      - generic [ref=e264]:
+        - generic [ref=e265]:
+          - generic [ref=e266]: Full Name
+          - textbox "John Doe" [ref=e267]
+        - generic [ref=e268]:
+          - generic [ref=e269]: Phone Number
+          - textbox "+91" [ref=e270]
+        - generic [ref=e271]:
+          - generic [ref=e272]: Interested Plan
+          - combobox [ref=e273]:
+            - option "Jeevan Amar (Protection)" [selected]
+            - option "Jeevan Tarun (Child Education)"
+            - option "Jeevan Labh (Savings)"
+            - option "Jeevan Anand (Whole Life)"
+        - button "Request Proposal" [ref=e274] [cursor=pointer]:
+          - text: Request Proposal
+          - img [ref=e275]
+    - generic [ref=e279]:
+      - generic [ref=e280]:
+        - heading "Common Queries" [level=2] [ref=e281]
+        - paragraph [ref=e282]: Everything you need to know about starting your financial journey.
+      - generic [ref=e283]:
+        - generic [ref=e284]:
+          - button "How do I choose the best LIC plan?" [ref=e285] [cursor=pointer]:
+            - generic [ref=e286]: How do I choose the best LIC plan?
+            - img [ref=e287]
+          - generic [ref=e290]: The best plan depends on your financial goals—whether its wealth creation, child education, or retirement. We offer a personalized consultation to match your risk profile with the right policy.
+        - generic [ref=e291]:
+          - button "What documents are required for application?" [ref=e292] [cursor=pointer]:
+            - generic [ref=e293]: What documents are required for application?
+            - img [ref=e294]
+          - generic [ref=e296]: Typically, you need KYC documents like Aadhar, PAN card, age proof, and income proof (for high-cover plans). Our team handles the documentation process for you.
+        - generic [ref=e297]:
+          - button "Can I manage my policy online?" [ref=e298] [cursor=pointer]:
+            - generic [ref=e299]: Can I manage my policy online?
+            - img [ref=e300]
+          - generic [ref=e302]: Yes, LIC provides a robust online portal and mobile app (LIC Customer) for premium payments, status checks, and loan applications.
+        - generic [ref=e303]:
+          - button "How does the claim process work?" [ref=e304] [cursor=pointer]:
+            - generic [ref=e305]: How does the claim process work?
+            - img [ref=e306]
+          - generic [ref=e308]: Survival and maturity claims are often automatic. For death claims, we provide dedicated support to help your family through every step of the paperwork.
+    - generic [ref=e310]:
+      - generic [ref=e311]:
+        - generic [ref=e312]:
+          - generic [ref=e313]: Consultant.
+          - paragraph [ref=e314]: Professional LIC financial consulting services dedicated to securing your legacy through expert wealth protection and growth strategies.
+        - generic [ref=e315]:
+          - heading "Quick Links" [level=4] [ref=e316]
+          - list [ref=e317]:
+            - listitem [ref=e318]:
+              - link "Home" [ref=e319] [cursor=pointer]:
+                - /url: "#hero"
+            - listitem [ref=e320]:
+              - link "Plans" [ref=e321] [cursor=pointer]:
+                - /url: "#plans"
+            - listitem [ref=e322]:
+              - link "Calculator" [ref=e323] [cursor=pointer]:
+                - /url: "#calculator"
+            - listitem [ref=e324]:
+              - link "FAQ" [ref=e325] [cursor=pointer]:
+                - /url: "#faq"
+        - generic [ref=e326]:
+          - heading "Contact Info" [level=4] [ref=e327]
+          - generic [ref=e328]:
+            - img [ref=e329]
+            - generic [ref=e331]: +91 98765 43210
+          - generic [ref=e332]:
+            - img [ref=e333]
+            - generic [ref=e336]: advisor@licindia.com
+          - generic [ref=e337]:
+            - img [ref=e338]
+            - generic [ref=e341]: Mumbai, Maharashtra, India
+      - generic [ref=e342]:
+        - paragraph [ref=e343]: © 2026 Umashankar Rai. All rights reserved.
+        - text: \n
+        - generic [ref=e344]:
+          - img [ref=e345] [cursor=pointer]
+          - img [ref=e348] [cursor=pointer]
+          - img [ref=e350] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e357] [cursor=pointer]:
+    - img [ref=e358]

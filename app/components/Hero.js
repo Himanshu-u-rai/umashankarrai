@@ -15,18 +15,9 @@ export default function Hero() {
             Plan-first LIC guidance for families who want clear choices, private
             consultation, and steady paperwork support.
           </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#plans">
-              Explore LIC plans <ArrowRight size={18} />
-            </a>
-            <a className="button button-secondary" href="#contact">
-              Request consultation
-            </a>
-          </div>
         </div>
 
         <div className="hero-portrait" aria-label="Portrait of Umashankar Rai">
-          <div className="portrait-halo" />
           <div className="portrait-slab" />
           <Image
             src="/umashankar-rai-portrait.png"
@@ -34,9 +25,18 @@ export default function Hero() {
             width={1172}
             height={1342}
             priority
-            sizes="(max-width: 760px) 96vw, 48vw"
+            sizes="(max-width: 760px) 84vw, 48vw"
             className="portrait-image"
           />
+        </div>
+
+        <div className="hero-actions">
+          <a className="button button-primary" href="#plans">
+            Explore LIC plans <ArrowRight size={18} />
+          </a>
+          <a className="button button-secondary" href="#contact">
+            Request consultation
+          </a>
         </div>
       </div>
     </section>

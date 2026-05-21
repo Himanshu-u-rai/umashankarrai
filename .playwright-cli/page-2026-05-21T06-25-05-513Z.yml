@@ -1,0 +1,236 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - link "Go to top" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+        - img [ref=e6]
+        - strong [ref=e10]: Umashankar Rai
+      - button "Open navigation" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: LIC insurance advisor
+        - generic "Umashankar Rai" [ref=e17]:
+          - generic [ref=e18]: Umashankar
+          - generic [ref=e19]: Rai
+        - paragraph [ref=e20]: Plan-first LIC guidance for families who want clear choices, private consultation, and steady paperwork support.
+        - generic [ref=e21]:
+          - link "Explore LIC plans" [ref=e22] [cursor=pointer]:
+            - /url: "#plans"
+            - text: Explore LIC plans
+            - img [ref=e23]
+          - link "Request consultation" [ref=e25] [cursor=pointer]:
+            - /url: "#contact"
+      - generic "Portrait of Umashankar Rai" [ref=e26]:
+        - img "Umashankar Rai" [ref=e28]
+    - generic [ref=e29]:
+      - generic [ref=e30]: Plan guide
+      - generic [ref=e31]:
+        - heading "Choose by life goal, not by brochure noise." [level=2] [ref=e33]
+        - paragraph [ref=e34]: Start with the outcome you need. The consultation narrows the LIC options after your age, income, dependents, and time horizon are reviewed. Plan numbers and UINs are referenced from the LIC official insurance-plan list.
+      - generic [ref=e35]:
+        - tablist "LIC plan goals" [ref=e36]:
+          - tab "Family Security" [selected] [ref=e37] [cursor=pointer]:
+            - img [ref=e38]
+            - generic [ref=e40]: Family Security
+          - tab "Savings Growth" [ref=e41] [cursor=pointer]:
+            - img [ref=e42]
+            - generic [ref=e48]: Savings Growth
+          - tab "Children Goals" [ref=e49] [cursor=pointer]:
+            - img [ref=e50]
+            - generic [ref=e53]: Children Goals
+          - tab "Retirement Income" [ref=e54] [cursor=pointer]:
+            - img [ref=e55]
+            - generic [ref=e57]: Retirement Income
+        - tabpanel [ref=e58]:
+          - generic [ref=e59]:
+            - img [ref=e60]
+            - generic [ref=e62]:
+              - heading "Family Security" [level=3] [ref=e63]
+              - paragraph [ref=e64]: Term assurance and protection-led plans for dependents and liabilities.
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - button "Plan 955 LIC's New Jeevan Amar Pure protection cover UIN 512N350V02" [ref=e67] [cursor=pointer]:
+                - generic [ref=e68]: Plan 955
+                - strong [ref=e69]: LIC's New Jeevan Amar
+                - generic [ref=e70]: Pure protection cover
+                - generic [ref=e71]: UIN 512N350V02
+                - img [ref=e72]
+              - link "Official source" [ref=e74] [cursor=pointer]:
+                - /url: https://licindia.in/web/guest/lic-s-new-jeevan-amar-955-uin-512n350v02
+                - text: Official source
+                - img [ref=e75]
+            - generic [ref=e79]:
+              - button "Plan 954 LIC's New Tech-Term Online term assurance UIN 512N351V02" [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: Plan 954
+                - strong [ref=e82]: LIC's New Tech-Term
+                - generic [ref=e83]: Online term assurance
+                - generic [ref=e84]: UIN 512N351V02
+                - img [ref=e85]
+              - link "Official source" [ref=e87] [cursor=pointer]:
+                - /url: https://licindia.in/insurance-plan
+                - text: Official source
+                - img [ref=e88]
+            - generic [ref=e92]:
+              - button "Plan 876 LIC's Digi Term Digital term cover UIN 512N356V02" [ref=e93] [cursor=pointer]:
+                - generic [ref=e94]: Plan 876
+                - strong [ref=e95]: LIC's Digi Term
+                - generic [ref=e96]: Digital term cover
+                - generic [ref=e97]: UIN 512N356V02
+                - img [ref=e98]
+              - link "Official source" [ref=e100] [cursor=pointer]:
+                - /url: https://licindia.in/insurance-plan
+                - text: Official source
+                - img [ref=e101]
+          - link "View LIC plan list, updated 01 Apr 2026" [ref=e105] [cursor=pointer]:
+            - /url: https://licindia.in/insurance-plan
+            - text: View LIC plan list, updated 01 Apr 2026
+            - img [ref=e106]
+    - generic [ref=e110]:
+      - img "Umashankar Rai in formal attire" [ref=e112]
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: Advisor method
+        - heading "Insurance guidance should feel measured, not rushed." [level=2] [ref=e115]
+        - paragraph [ref=e116]: "The work is to translate LIC policy catalogue into decisions a family can actually act on: enough protection, suitable terms, clean paperwork, and reliable follow-through."
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - img [ref=e119]
+            - generic [ref=e123]:
+              - heading "Understand the household" [level=3] [ref=e124]
+              - paragraph [ref=e125]: Income, liabilities, dependents, current policies, and life goals are reviewed first.
+          - generic [ref=e126]:
+            - img [ref=e127]
+            - generic [ref=e130]:
+              - heading "Shortlist LIC plans" [level=3] [ref=e131]
+              - paragraph [ref=e132]: Only relevant official LIC options are compared by purpose, term, and policy structure.
+          - generic [ref=e133]:
+            - img [ref=e134]
+            - generic [ref=e137]:
+              - heading "Prepare illustration request" [level=3] [ref=e138]
+              - paragraph [ref=e139]: The final premium and benefit values are taken from LIC's official illustration process.
+          - generic [ref=e140]:
+            - img [ref=e141]
+            - generic [ref=e146]:
+              - heading "Support after issue" [level=3] [ref=e147]
+              - paragraph [ref=e148]: Service continues for premium reminders, reviews, nominee updates, and claim paperwork.
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - paragraph [ref=e152]: Trust framework
+          - heading "Clear boundaries create better advice." [level=2] [ref=e153]
+        - paragraph [ref=e154]: The site is designed to guide conversations, not replace LIC official underwriting, premium calculation, or policy issue process.
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - img [ref=e157]
+          - heading "Official identifiers" [level=3] [ref=e160]
+          - paragraph [ref=e161]: Plan names, plan numbers, and UINs are aligned with LIC's public insurance-plan list.
+        - generic [ref=e162]:
+          - img [ref=e163]
+          - heading "No invented maturity figures" [level=3] [ref=e168]
+          - paragraph [ref=e169]: The site does not estimate bonuses or maturity values without an official LIC illustration.
+        - generic [ref=e170]:
+          - img [ref=e171]
+          - heading "Private contact approach" [level=3] [ref=e175]
+          - paragraph [ref=e176]: Advisor contact details are not printed publicly; inquiries are sent through your email client.
+        - generic [ref=e177]:
+          - img [ref=e178]
+          - heading "Paperwork support" [level=3] [ref=e181]
+          - paragraph [ref=e182]: Consultation covers documents, nominee details, premium schedule, and claim-support basics.
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - paragraph [ref=e185]: Request consultation
+        - heading "Send the plan context before the first call." [level=2] [ref=e186]
+        - paragraph [ref=e187]: The form opens a mail draft from your device. Private advisor contact details are intentionally not printed on the page.
+        - generic [ref=e188]:
+          - img [ref=e189]
+          - generic [ref=e192]: No public phone or email display. No backend storage in this version.
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - text: Full name
+          - textbox "Full name" [ref=e195]:
+            - /placeholder: Your name
+        - generic [ref=e196]:
+          - text: Your phone number
+          - textbox "Your phone number" [ref=e197]:
+            - /placeholder: For callback coordination
+        - generic [ref=e198]:
+          - text: Interested LIC plan
+          - combobox "Interested LIC plan" [ref=e199]:
+            - option "LIC's New Jeevan Amar - Plan 955" [selected]
+            - option "LIC's New Tech-Term - Plan 954"
+            - option "LIC's Digi Term - Plan 876"
+            - option "LIC's Jeevan Labh Plan - Plan 736"
+            - option "LIC's New Endowment Plan - Plan 714"
+            - option "LIC's Bima Jyoti - Plan 760"
+            - option "LIC's Jeevan Tarun - Plan 734"
+            - option "LIC's Jeevan Lakshya - Plan 733"
+            - option "LIC's New Money Back Plan - 25 Years - Plan 721"
+            - option "LIC's Jeevan Umang - Plan 745"
+            - option "LIC's Jeevan Utsav - Plan 771"
+            - option "LIC's New Jeevan Anand - Plan 715"
+        - generic [ref=e200]:
+          - text: Preferred time
+          - combobox "Preferred time" [ref=e201]:
+            - option "Morning" [selected]
+            - option "Afternoon"
+            - option "Evening"
+        - generic [ref=e202]:
+          - text: Message
+          - textbox "Message" [ref=e203]:
+            - /placeholder: Goal, age, income range, existing LIC policy, or question
+        - button "Open mail draft" [ref=e204] [cursor=pointer]:
+          - text: Open mail draft
+          - img [ref=e205]
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - paragraph [ref=e210]: Questions
+        - heading "Before you request a consultation." [level=2] [ref=e211]
+      - generic [ref=e212]:
+        - generic [ref=e213]:
+          - button "Is this an official LIC website?" [expanded] [ref=e214] [cursor=pointer]:
+            - generic [ref=e215]: Is this an official LIC website?
+            - img [ref=e216]
+          - paragraph [ref=e219]: No. This is an advisor website for Umashankar Rai. LIC policy terms, illustrations, and final documents are issued through LIC's official process.
+        - generic [ref=e220]:
+          - button "Does this site show guaranteed LIC maturity values?" [ref=e221] [cursor=pointer]:
+            - generic [ref=e222]: Does this site show guaranteed LIC maturity values?
+            - img [ref=e223]
+          - generic:
+            - paragraph: No. The plan guide uses official plan identifiers and your inputs to prepare an illustration request. Exact premium, GST, bonus, maturity, and rider values require LIC official policy illustration.
+        - generic [ref=e225]:
+          - button "Why not estimate returns like other websites?" [ref=e226] [cursor=pointer]:
+            - generic [ref=e227]: Why not estimate returns like other websites?
+            - img [ref=e228]
+          - generic:
+            - paragraph: Generic return estimates can be misleading for LIC products. This site avoids invented maturity values and routes the selected plan details into a proper consultation request.
+        - generic [ref=e230]:
+          - button "Will private contact details be public?" [ref=e231] [cursor=pointer]:
+            - generic [ref=e232]: Will private contact details be public?
+            - img [ref=e233]
+          - generic:
+            - paragraph: No. The inquiry form opens an email draft from your device. Private advisor phone and email details are not printed on the page.
+    - generic [ref=e235]:
+      - generic [ref=e236]:
+        - link "Umashankar Rai" [ref=e237] [cursor=pointer]:
+          - /url: "#top"
+          - img [ref=e238]
+          - generic [ref=e241]: Umashankar Rai
+        - paragraph [ref=e242]: Independent advisor website for LIC planning conversations. Final policy terms, premium values, and benefits must be confirmed through LIC official process.
+      - navigation "Footer navigation" [ref=e243]:
+        - link "Plans" [ref=e244] [cursor=pointer]:
+          - /url: "#plans"
+        - link "Advisor method" [ref=e245] [cursor=pointer]:
+          - /url: "#advisor"
+        - link "Request consultation" [ref=e246] [cursor=pointer]:
+          - /url: "#contact"
+        - link "FAQ" [ref=e247] [cursor=pointer]:
+          - /url: "#faq"
+      - generic [ref=e248]:
+        - generic [ref=e249]: Plan data reference
+        - link "LIC official list" [ref=e250] [cursor=pointer]:
+          - /url: https://licindia.in/insurance-plan
+          - text: LIC official list
+          - img [ref=e251]
+      - generic [ref=e255]: Copyright 2026 Umashankar Rai. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e261] [cursor=pointer]:
+    - img [ref=e262]

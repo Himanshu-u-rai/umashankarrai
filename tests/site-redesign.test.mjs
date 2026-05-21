@@ -44,14 +44,19 @@ test("portrait-led redesign uses public assets and next/image instead of raw img
 test("hero stays minimal and uncluttered", () => {
   const hero = read("app/components/Hero.js");
   const css = read("app/globals.css");
+  const copyIndex = hero.indexOf('className="hero-copy"');
+  const portraitIndex = hero.indexOf('className="hero-portrait"');
+  const actionsIndex = hero.indexOf('className="hero-actions"');
 
   assert.match(hero, /hero-stage/, "hero should have a poster-style stage wrapper");
   assert.match(hero, /hero-nameplate/, "hero should separate the oversized name composition");
+  assert.ok(copyIndex < portraitIndex, "hero copy should render before the portrait");
+  assert.ok(portraitIndex < actionsIndex, "hero actions should render below the portrait in source order");
   assert.ok(!hero.includes("hero-proof-rail"), "hero should not include a proof rail");
   assert.ok(!hero.includes("hero-watermark"), "hero should not include a decorative watermark");
   assert.ok(!hero.includes("hero-assurance"), "hero should not include a secondary assurance row");
-  assert.match(css, /grid-template-areas:\s*"copy visual"/, "desktop hero should be composition-driven");
-  assert.match(css, /grid-template-areas:\s*"copy"\s*"visual"/, "mobile hero should remain simple");
+  assert.match(css, /grid-template-areas:\s*"copy visual"\s*"actions visual"/, "desktop hero should keep actions with the text column");
+  assert.match(css, /grid-template-areas:\s*"copy"\s*"visual"\s*"actions"/, "mobile hero should place actions below the portrait");
 });
 
 test("raw private contact details are not visibly rendered", () => {
