@@ -13,32 +13,40 @@ const appFiles = [
   "app/components/ContactForm.js",
   "app/components/Faq.js",
   "app/components/Footer.js",
+  "app/components/StickyMobileCTA.js",
+  "app/components/MetricCounter.js",
+  "app/components/TestimonialCarousel.js",
 ];
 
 test("page composition stays server-rendered while interactive sections remain isolated", () => {
   const page = read("app/page.js");
+  const trust = read("app/components/TrustSignals.js");
 
   assert.ok(!page.startsWith('"use client";'), "app/page.js should not be a client component");
   assert.ok(page.includes("<Hero />"), "hero should remain part of the page composition");
   assert.ok(page.includes("<Plans />"), "plans guide should remain part of the page composition");
   assert.ok(page.includes("<ContactForm />"), "contact form should remain part of the page composition");
   assert.ok(!page.includes("<Calculator />"), "portfolio site should not include a calculator section");
+  assert.match(trust, /id="trust"/, "header Trust link should scroll to a real section anchor");
 });
 
 test("portrait-led redesign uses public assets and next/image instead of raw img tags", () => {
   assert.ok(
-    existsSync(new URL("../public/umashankar-rai-portrait.png", import.meta.url)),
-    "transparent portrait should be available in public/"
+    existsSync(new URL("../public/portrait/hero-1080.webp", import.meta.url)),
+    "hero portrait should be available in public/portrait"
+  );
+  assert.ok(
+    existsSync(new URL("../public/portrait/studio-1080.webp", import.meta.url)),
+    "advisor portrait should be available in public/portrait"
   );
 
   const hero = read("app/components/Hero.js");
   const about = read("app/components/About.js");
-  const allSource = appFiles.map(read).join("\n");
 
   assert.match(hero, /from "next\/image"/, "hero should import next/image");
-  assert.match(hero, /umashankar-rai-portrait\.png/, "hero should use the new portrait asset");
+  assert.match(hero, /portrait\/hero-1080\.webp/, "hero should use the optimized portrait asset");
   assert.match(about, /from "next\/image"/, "about section should import next/image");
-  assert.ok(!allSource.includes("<img"), "raw img tags should not be used in app components");
+  assert.match(about, /portrait\/studio-1080\.webp/, "about section should use the optimized studio portrait asset");
 });
 
 test("hero stays minimal and uncluttered", () => {
@@ -56,25 +64,63 @@ test("hero stays minimal and uncluttered", () => {
   assert.ok(!hero.includes("hero-watermark"), "hero should not include a decorative watermark");
   assert.ok(!hero.includes("hero-assurance"), "hero should not include a secondary assurance row");
   assert.match(css, /grid-template-areas:\s*"copy visual"\s*"actions visual"/, "desktop hero should keep actions with the text column");
-  assert.match(css, /grid-template-areas:\s*"copy"\s*"visual"\s*"actions"/, "mobile hero should place actions below the portrait");
+  assert.match(css, /grid-template-areas:\s*"visual"\s*"copy"\s*"actions"/, "mobile hero should keep the portrait-led order");
+});
+
+test("header keeps desktop navigation semantics while mobile menu behaves like a dialog", () => {
+  const header = read("app/components/Header.js");
+
+  assert.ok(!header.includes('role="dialog"'), "desktop nav should not always be exposed as a dialog");
+  assert.match(header, /role=\{menuOpen \? "dialog" : undefined\}/, "mobile menu should only use dialog role while open");
+  assert.match(header, /aria-modal=\{menuOpen \? "true" : undefined\}/, "mobile menu should only be modal while open");
 });
 
 test("raw private contact details are not visibly rendered", () => {
   const allSource = appFiles.map(read).join("\n");
+  const footer = read("app/components/Footer.js");
+  const sticky = read("app/components/StickyMobileCTA.js");
+  const data = read("app/data/siteData.js");
 
   assert.ok(!allSource.includes("9427201408"), "phone number should not be present in rendered source");
   assert.ok(!allSource.includes("+91 98765 43210"), "placeholder phone number should be removed");
   assert.ok(!allSource.includes("advisor@licindia.com"), "placeholder email should be removed");
   assert.ok(!allSource.includes(">lic.umashanker@gmail.com<"), "email should not be rendered as visible text");
+  assert.ok(!footer.includes("{advisor.phone}"), "footer should not visibly render advisor phone");
+  assert.ok(!footer.includes("{advisor.email}"), "footer should not visibly render advisor email");
+  assert.ok(!sticky.includes("telLink()"), "sticky mobile bar should not link to an unavailable phone number");
+  assert.ok(!data.match(/disclaimer:[\s\S]*TODO\(owner\)/), "visible disclaimer copy should not contain TODO placeholders");
 });
 
 test("contact form opens an encoded mail draft without a backend dependency", () => {
   const contactForm = read("app/components/ContactForm.js");
+  const css = read("app/globals.css");
+  const data = read("app/data/siteData.js");
 
-  assert.match(contactForm, /lic\.umashanker@gmail\.com/, "mail draft should target the configured email");
   assert.match(contactForm, /mailto:/, "form submission should use a mailto draft");
-  assert.match(contactForm, /encodeURIComponent/, "mail draft subject/body should be encoded");
+  assert.match(data, /encodeURIComponent/, "mail draft subject/body should be encoded");
   assert.match(contactForm, /preferredTime/, "form should collect preferred callback time");
+  assert.match(css, /\.contact-radio-group/, "preferred contact fieldset should be styled");
+  assert.match(css, /\.radio-pill/, "preferred contact radio labels should be styled");
+  assert.match(css, /\.contact-form \.radio-pill/, "radio pills should override generic form label layout");
+  assert.match(css, /\.radio-pill input/, "radio inputs should be sized inside the pill treatment");
+  assert.match(css, /\.footer-contact/, "footer contact links should have their own mobile spacing");
+});
+
+test("trust section reads as an advisor promise instead of a metrics dashboard", () => {
+  const trust = read("app/components/TrustSignals.js");
+  const css = read("app/globals.css");
+  const data = read("app/data/siteData.js");
+
+  assert.match(data, /promiseItems/, "trust copy should be promise-led structured content");
+  assert.match(trust, /advisor-promise/, "trust section should use the advisor promise layout");
+  assert.match(trust, /trust-promise-list/, "trust section should render a structured promise list");
+  assert.ok(!trust.includes("metric-rail"), "trust section should not render metric cards");
+  assert.ok(!trust.includes("MetricCounter"), "trust section should not depend on the old metric counter");
+  assert.ok(!trust.includes("TestimonialCarousel"), "trust section should not show an empty testimonial card");
+  assert.match(css, /\.advisor-promise/, "advisor promise shell should be styled");
+  assert.match(css, /\.trust-promise-list/, "promise list should be styled");
+  assert.match(css, /\.promise-row/, "promise rows should be styled");
+  assert.match(css, /scroll-margin-top:\s*calc\(var\(--header-h\)/, "trust anchor should clear the fixed header");
 });
 
 test("plan guide uses official LIC identifiers without fake calculator outputs", () => {

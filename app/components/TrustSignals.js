@@ -1,54 +1,58 @@
-import { BadgeCheck, FileSearch, LockKeyhole, ScrollText } from "lucide-react";
+"use client";
 
-const signals = [
-  {
-    title: "Official identifiers",
-    text: "Plan names, plan numbers, and UINs are aligned with LIC's public insurance-plan list.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "No invented maturity figures",
-    text: "The site does not estimate bonuses or maturity values without an official LIC illustration.",
-    icon: FileSearch,
-  },
-  {
-    title: "Private contact approach",
-    text: "Advisor contact details are not printed publicly; inquiries are sent through your email client.",
-    icon: LockKeyhole,
-  },
-  {
-    title: "Paperwork support",
-    text: "Consultation covers documents, nominee details, premium schedule, and claim-support basics.",
-    icon: ScrollText,
-  },
-];
+import { ClipboardCheck, FileText, Handshake, ShieldCheck } from "lucide-react";
+import { useLang } from "./LangProvider";
+import { t } from "../data/i18n";
+import { trustCopy } from "../data/siteData";
+
+const PROMISE_ICONS = {
+  ClipboardCheck,
+  FileText,
+  Handshake,
+  ShieldCheck,
+};
 
 export default function TrustSignals() {
-  return (
-    <section className="section trust-section">
-      <div className="section-heading-row">
-        <div>
-          <p className="section-kicker">Trust framework</p>
-          <h2>Clear boundaries create better advice.</h2>
-        </div>
-        <p>
-          The site is designed to guide conversations, not replace LIC official
-          underwriting, premium calculation, or policy issue process.
-        </p>
-      </div>
+  const { lang } = useLang();
 
-      <div className="trust-grid">
-        {signals.map((signal) => {
-          const Icon = signal.icon;
-          return (
-            <div className="trust-item" key={signal.title}>
-              <Icon size={24} />
-              <h3>{signal.title}</h3>
-              <p>{signal.text}</p>
+  return (
+    <>
+      <hr className="section-ribbon" aria-hidden="true" />
+      <section className="section trust-section" id="trust" aria-labelledby="trust-heading">
+        <div className="advisor-promise">
+          <div className="promise-statement">
+            <p className="section-kicker">{t(trustCopy.eyebrow, lang)}</p>
+            <h2 id="trust-heading">{t(trustCopy.heading, lang)}</h2>
+            <p className="promise-lede">{t(trustCopy.intro, lang)}</p>
+            <a className="button button-light promise-cta" href="#contact">
+              {t(trustCopy.cta, lang)}
+            </a>
+          </div>
+
+          <div className="promise-detail">
+            <p className="promise-overline">{t(trustCopy.promiseLabel, lang)}</p>
+            <div className="trust-promise-list" role="list">
+              {trustCopy.promiseItems.map((item) => {
+                const Icon = PROMISE_ICONS[item.iconKey] || ShieldCheck;
+                const title = t(item.title, lang);
+                return (
+                  <article className="promise-row" role="listitem" key={title}>
+                    <span className="promise-icon" aria-hidden="true">
+                      <Icon size={19} />
+                    </span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{t(item.text, lang)}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </section>
+
+            <p className="trust-disclaimer">{t(trustCopy.disclaimer, lang)}</p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

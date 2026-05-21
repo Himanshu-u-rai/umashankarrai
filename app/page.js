@@ -6,6 +6,7 @@ import TrustSignals from "./components/TrustSignals";
 import Faq from "./components/Faq";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import StickyMobileCTA from "./components/StickyMobileCTA";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ContactForm />
       <Faq />
       <Footer />
+      <StickyMobileCTA />
     </main>
   );
 }
