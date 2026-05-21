@@ -14,6 +14,7 @@ import {
 } from "../data/siteData";
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
+import Reveal from "./Reveal";
 
 const icons = {
   "family-security":   ShieldHalf,
@@ -56,10 +57,12 @@ export default function Plans() {
 
   return (
     <section className="section plan-guide" id="plans">
-      <div className="plan-guide-heading">
-        <h2>{t(plansSectionCopy.heading, lang)}</h2>
-        <p>{t(plansSectionCopy.intro, lang)}</p>
-      </div>
+      <Reveal>
+        <div className="plan-guide-heading">
+          <h2>{t(plansSectionCopy.heading, lang)}</h2>
+          <p>{t(plansSectionCopy.intro, lang)}</p>
+        </div>
+      </Reveal>
 
       <div className="pc-wrap">
         <AnimatePresence mode="wait">

@@ -5,6 +5,7 @@ import { ShieldCheck, Award } from "lucide-react";
 import { advisor, aboutCopy } from "../data/siteData";
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
+import Reveal from "./Reveal";
 
 const STATS = [
   { value: "25+", label: { en: "Years advising", hi: "वर्षों का अनुभव" } },
@@ -20,6 +21,7 @@ export default function About() {
 
       {/* ── Hero row: photo + eyebrow+headline column ── */}
       <div className="ab-hero-row">
+        <Reveal y={16}>
         <div className="ab-photo-wrap">
           <Image
             src="/portrait/studio-1080.webp"
@@ -30,6 +32,8 @@ export default function About() {
             className="ab-photo"
           />
         </div>
+        </Reveal>
+        <Reveal delay={0.12}>
         <div className="ab-intro-col">
           <p className="ab-eyebrow">{t(aboutCopy.eyebrow, lang)}</p>
           <div className="ab-spacer" />
@@ -60,19 +64,24 @@ export default function About() {
 
           <h2 className="ab-heading">{t(aboutCopy.heading, lang)}</h2>
         </div>
+        </Reveal>
       </div>
 
       {/* ── Story para ── */}
+      <Reveal delay={0.08}>
       <p className="ab-story">{t(aboutCopy.story, lang)}</p>
+      </Reveal>
 
       {/* ── Process steps ── */}
       <div className="ab-steps">
         {aboutCopy.steps.map((step, i) => (
-          <div key={i} className="ab-step">
+          <Reveal key={i} delay={i * 0.1}>
+          <div className="ab-step">
             <span className="ab-step-num">0{i + 1}</span>
             <strong className="ab-step-title">{t(step.title, lang)}</strong>
             <p className="ab-step-text">{t(step.text, lang)}</p>
           </div>
+          </Reveal>
         ))}
       </div>
 

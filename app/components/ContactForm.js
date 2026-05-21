@@ -15,6 +15,7 @@ import {
 } from "../data/siteData";
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
+import Reveal from "./Reveal";
 
 const initialForm = {
   name: "",
@@ -82,6 +83,7 @@ export default function ContactForm() {
   return (
     <section className="section contact-section" id="contact">
       {/* Left: editorial copy + fast-path contact rows */}
+      <Reveal>
       <div className="contact-copy">
         <p className="section-kicker">
           <span aria-hidden="true" style={{ color: "var(--lic-saffron)", marginRight: "0.45em" }}>▪</span>
@@ -126,8 +128,10 @@ export default function ContactForm() {
           </>
         )}
       </div>
+      </Reveal>
 
       {/* Right: editorial underline form */}
+      <Reveal delay={0.15}>
       {submitted ? (
         <div className="form-status form-success" role="status">
           <Check size={22} aria-hidden="true" style={{ color: "var(--lic-saffron)" }} />
@@ -246,6 +250,7 @@ export default function ContactForm() {
           </div>
         </form>
       )}
+      </Reveal>
     </section>
   );
 }

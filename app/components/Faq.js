@@ -11,6 +11,7 @@ import {
 } from "../data/siteData";
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
+import Reveal from "./Reveal";
 
 // Prefer the bilingual mirror; fall back to the plain-string list so the
 // component still renders if the mirror was never created.
@@ -30,13 +31,15 @@ export default function Faq() {
 
   return (
     <section className="section faq-section" id="faq">
-      <div className="faq-heading">
-        <p className="section-kicker">
-          <span aria-hidden="true" className="faq-kicker-bullet">▪</span>{" "}
-          {t(faqSectionCopy.eyebrow, lang)}
-        </p>
-        <h2>{t(faqSectionCopy.heading, lang)}</h2>
-      </div>
+      <Reveal>
+        <div className="faq-heading">
+          <p className="section-kicker">
+            <span aria-hidden="true" className="faq-kicker-bullet">▪</span>{" "}
+            {t(faqSectionCopy.eyebrow, lang)}
+          </p>
+          <h2>{t(faqSectionCopy.heading, lang)}</h2>
+        </div>
+      </Reveal>
 
       <div className="faq-list">
         {items.map((faq, index) => {
