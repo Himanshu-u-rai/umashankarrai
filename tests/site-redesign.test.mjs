@@ -5,6 +5,7 @@ import assert from "node:assert/strict";
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const appFiles = [
   "app/page.js",
+  "app/layout.js",
   "app/components/Header.js",
   "app/components/Hero.js",
   "app/components/Plans.js",
@@ -14,6 +15,7 @@ const appFiles = [
   "app/components/Faq.js",
   "app/components/Footer.js",
   "app/components/StickyMobileCTA.js",
+  "app/components/BackToTop.js",
   "app/components/MetricCounter.js",
   "app/components/TestimonialCarousel.js",
 ];
@@ -63,7 +65,9 @@ test("hero stays minimal and uncluttered", () => {
   assert.ok(!hero.includes("hero-proof-rail"), "hero should not include a proof rail");
   assert.ok(!hero.includes("hero-watermark"), "hero should not include a decorative watermark");
   assert.ok(!hero.includes("hero-assurance"), "hero should not include a secondary assurance row");
-  assert.match(css, /grid-template-areas:\s*"copy visual"\s*"actions visual"/, "desktop hero should keep actions with the text column");
+  assert.match(hero, /from "next\/link"/, "hero should use Next links for internal navigation");
+  assert.match(hero, /<Link className="button button-secondary" href="\/plans">/, "hero Explore plans CTA should open the dedicated plans catalogue");
+  assert.match(css, /grid-template-areas:\s*"\. visual"\s*"copy visual"\s*"actions visual"/, "desktop hero should keep actions with the text column");
   assert.match(css, /grid-template-areas:\s*"visual"\s*"copy"\s*"actions"/, "mobile hero should keep the portrait-led order");
 });
 
@@ -73,7 +77,27 @@ test("header keeps desktop navigation semantics while mobile menu behaves like a
   assert.ok(!header.includes('role="dialog"'), "desktop nav should not always be exposed as a dialog");
   assert.match(header, /role=\{menuOpen \? "dialog" : undefined\}/, "mobile menu should only use dialog role while open");
   assert.match(header, /aria-modal=\{menuOpen \? "true" : undefined\}/, "mobile menu should only be modal while open");
+  assert.match(header, /usePathname/, "shared header should route section anchors correctly off the homepage");
 });
+
+test("back to top control matches site theme and clears mobile chrome", () => {
+  const layout = read("app/layout.js");
+  const backToTop = read("app/components/BackToTop.js");
+  const css = read("app/globals.css");
+
+  assert.match(layout, /<BackToTop \/>/, "back to top button should be global");
+  assert.match(backToTop, /aria-label="Back to top"/, "button should have a clear accessible label");
+  assert.match(backToTop, /window\.scrollTo\(\{\s*top:\s*0/, "button should scroll to the top");
+  assert.match(backToTop, /prefers-reduced-motion/, "button should respect reduced motion preferences");
+  assert.ok(!backToTop.includes("7c4dff"), "button should not use the sample purple gradient");
+  assert.ok(!backToTop.includes("00d4ff"), "button should not use the sample cyan gradient");
+  assert.match(css, /\.back-to-top/, "back to top styles should be in global CSS");
+  assert.match(css, /var\(--lic-blue\)/, "button should use the LIC blue token");
+  assert.match(css, /var\(--lic-saffron\)/, "button should use the LIC saffron token");
+  assert.match(css, /bottom:\s*calc\(74px \+ var\(--safe-bottom\)\)/, "mobile position should clear the sticky CTA bar");
+  assert.match(css, /@media \(min-width:\s*1080px\)[\s\S]*\.back-to-top/, "desktop position should be adjusted independently");
+}
+);
 
 test("raw private contact details are not visibly rendered", () => {
   const allSource = appFiles.map(read).join("\n");
@@ -96,14 +120,15 @@ test("contact form opens an encoded mail draft without a backend dependency", ()
   const css = read("app/globals.css");
   const data = read("app/data/siteData.js");
 
-  assert.match(contactForm, /mailto:/, "form submission should use a mailto draft");
+  assert.match(contactForm, /mailtoLink\(subject, body\)/, "form submission should use a mailto draft helper");
+  assert.ok(data.includes("return `mailto:${advisor.email}"), "mailto helper should create a mailto draft");
   assert.match(data, /encodeURIComponent/, "mail draft subject/body should be encoded");
   assert.match(contactForm, /preferredTime/, "form should collect preferred callback time");
   assert.match(css, /\.contact-radio-group/, "preferred contact fieldset should be styled");
   assert.match(css, /\.radio-pill/, "preferred contact radio labels should be styled");
   assert.match(css, /\.contact-form \.radio-pill/, "radio pills should override generic form label layout");
   assert.match(css, /\.radio-pill input/, "radio inputs should be sized inside the pill treatment");
-  assert.match(css, /\.footer-contact/, "footer contact links should have their own mobile spacing");
+  assert.match(read("app/components/Footer.js"), /\.ft-contact-link/, "footer contact links should have their own mobile spacing");
 });
 
 test("trust section reads as an advisor promise instead of a metrics dashboard", () => {
@@ -126,9 +151,19 @@ test("trust section reads as an advisor promise instead of a metrics dashboard",
 test("plan guide uses official LIC identifiers without fake calculator outputs", () => {
   const plans = read("app/components/Plans.js");
   const data = read("app/data/siteData.js");
+  const css = read("app/globals.css");
 
   assert.match(data, /officialPlanSource/, "plan data should record the official LIC source");
   assert.match(data, /512N304V03/, "plan data should include LIC UINs from the official list");
+  assert.match(data, /slug:\s*"lic-jeevan-labh-plan-736"/, "homepage plan entries should map to official detail pages");
+  assert.match(data, /selectCta:\s*\{\s*en:\s*"Know more"/, "homepage plan CTA should say Know more");
+  assert.match(data, /allPlansCta/, "plan guide should expose a catalogue CTA label");
+  assert.match(plans, /from "next\/link"/, "homepage plan guide should use Next links for internal plan routes");
+  assert.match(plans, /href=\{`\/plans\/\$\{plan\.slug\}`\}/, "product CTAs should link to dedicated plan pages");
+  assert.match(plans, /href="\/plans"/, "plan guide should include a link to the full plans catalogue");
+  assert.match(css, /\.plan-guide-heading\s*>\s*p/, "plan guide intro spacing should not depend on being the last child");
+  assert.ok(!css.includes(".plan-guide-heading p:last-child"), "plan guide intro should keep its spacing after the catalogue CTA");
+  assert.ok(!plans.includes("plan-selected"), "product CTA should not preselect the contact form anymore");
   assert.ok(!plans.includes("Official source"), "plan rows should not be cluttered with source links");
   assert.ok(!plans.includes("UIN {plan.uin}"), "plan rows should not show UINs inline");
   assert.ok(!plans.includes("Math.pow"), "plan guide should not estimate fake compound returns");

@@ -1,0 +1,568 @@
+.plansPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(255, 139, 31, 0.12), transparent 24%),
+    linear-gradient(180deg, var(--paper) 0%, #fffdfa 46%, var(--paper-deep) 100%);
+  color: var(--ink);
+}
+
+.plansShell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 34px) 0 88px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: clamp(42px, 8vw, 92px);
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: var(--lic-blue);
+}
+
+.catalogueHero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: clamp(56px, 9vw, 112px);
+}
+
+.eyebrow {
+  color: var(--lic-saffron);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.catalogueHero h1,
+.detailHero h1 {
+  max-width: 820px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(44px, 9vw, 96px);
+  font-weight: 700;
+  line-height: 0.94;
+  margin-top: 12px;
+}
+
+.heroLead {
+  max-width: 670px;
+  color: var(--muted);
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.7;
+  margin-top: 22px;
+}
+
+.sourcePanel {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.sourcePanel p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.sourceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.sourceLink,
+.officialLink,
+.documentLink,
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--lic-blue);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.sourceLink {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  padding: 9px 14px;
+  font-size: 13px;
+}
+
+.statRail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.statRail div {
+  background: rgba(255, 255, 255, 0.78);
+  padding: 18px;
+}
+
+.statRail strong {
+  display: block;
+  font-size: clamp(26px, 5vw, 42px);
+  line-height: 1;
+}
+
+.statRail span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.catalogueBlock {
+  display: grid;
+  gap: clamp(48px, 8vw, 86px);
+}
+
+.groupSection {
+  display: grid;
+  gap: 22px;
+  scroll-margin-top: 90px;
+}
+
+.groupHead {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+}
+
+.groupHead h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1;
+}
+
+.groupHead p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.countBadge {
+  justify-self: start;
+  border: 1px solid rgba(255, 139, 31, 0.42);
+  border-radius: 999px;
+  background: var(--saffron-soft);
+  color: var(--lic-blue);
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 12px;
+}
+
+.planGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.planCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 18px;
+  box-shadow: 0 12px 34px rgba(14, 19, 32, 0.04);
+}
+
+.planMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.chip,
+.statusChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 6px 10px;
+  text-transform: uppercase;
+}
+
+.chip {
+  background: var(--lic-blue);
+  color: white;
+}
+
+.statusChip {
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.planCard h3 {
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.18;
+  margin: 0;
+}
+
+.planCard p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+  margin-top: 9px;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.knowMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 10px 18px;
+}
+
+.officialLink {
+  font-size: 13px;
+}
+
+.detailHero {
+  display: grid;
+  gap: 26px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: clamp(42px, 7vw, 76px);
+}
+
+.detailMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primaryAction,
+.secondaryAction {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius);
+  font-weight: 900;
+  padding: 12px 18px;
+}
+
+.primaryAction {
+  background: var(--lic-saffron);
+  color: white;
+  box-shadow: 0 16px 34px rgba(255, 139, 31, 0.25);
+}
+
+.secondaryAction {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+}
+
+.detailLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(34px, 6vw, 68px);
+  padding: clamp(46px, 8vw, 86px) 0;
+}
+
+.detailMain,
+.detailAside {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+
+.detailMain > .infoSection:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.infoSection,
+.calculatorPanel,
+.quotePanel {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+
+.infoSection h2,
+.calculatorPanel h2,
+.quotePanel h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.cleanList,
+.documentList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cleanList li {
+  color: var(--muted);
+  line-height: 1.65;
+  padding-left: 22px;
+  position: relative;
+}
+
+.cleanList li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  border-radius: 50%;
+  background: var(--lic-saffron);
+}
+
+.documentList li {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.documentLink {
+  font-size: 14px;
+}
+
+.relatedGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.relatedCard {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 16px;
+}
+
+.relatedCard strong {
+  display: block;
+  line-height: 1.25;
+}
+
+.relatedCard span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.calculatorPanel,
+.quotePanel {
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.calculatorForm,
+.quoteForm {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.calculatorForm label,
+.quoteForm label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calculatorForm input,
+.calculatorForm select,
+.quoteForm input,
+.quoteForm select,
+.quoteForm textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-bottom: 1px solid rgba(14, 19, 32, 0.24);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  outline: none;
+  padding: 8px 0;
+  text-transform: none;
+}
+
+.quoteForm textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.notice {
+  border-left: 3px solid var(--lic-saffron);
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 14px;
+  padding-left: 14px;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.smallButton {
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lic-blue);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 10px 16px;
+}
+
+.ghostButton {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 10px 16px;
+}
+
+.successNote {
+  color: var(--success);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+@media (min-width: 720px) {
+  .catalogueHero {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  }
+
+  .groupHead {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .planCard {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 22px 24px;
+  }
+
+  .cardActions {
+    justify-content: flex-end;
+  }
+
+  .fieldGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .plansShell {
+    width: min(1200px, calc(100% - 80px));
+    padding-top: calc(var(--header-h) + 44px);
+  }
+
+  .detailLayout {
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.55fr);
+    align-items: start;
+  }
+
+  .detailAside {
+    position: sticky;
+    top: 36px;
+  }
+}
+
+@media (max-width: 540px) {
+  .plansShell {
+    width: min(100% - 28px, 430px);
+  }
+
+  .statRail {
+    grid-template-columns: 1fr;
+  }
+
+  .knowMore,
+  .officialLink,
+  .primaryAction,
+  .secondaryAction,
+  .smallButton,
+  .ghostButton {
+    width: 100%;
+  }
+}

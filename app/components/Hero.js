@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { advisor, hasWhatsApp, heroCopy, whatsappLink } from "../data/siteData";
 import { t } from "../data/i18n";
@@ -126,9 +127,9 @@ export default function Hero() {
           >
             {primaryLabel}
           </a>
-          <a className="button button-secondary" href="#plans">
+          <Link className="button button-secondary" href="/plans">
             {secondaryLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

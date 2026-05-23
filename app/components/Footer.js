@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Phone, MessageCircle, Mail, ExternalLink, MapPin } from "lucide-react";
 import {
   advisor,
@@ -45,11 +46,11 @@ export default function Footer() {
         {/* Nav column */}
         <div className="ft-col">
           <p className="ft-col-heading">Navigate</p>
-          <a href="#plans">{t(footerCopy.navPlans, lang)}</a>
-          <a href="#advisor">{t(footerCopy.navAdvisor, lang)}</a>
-          <a href="#contact">{t(footerCopy.navContact, lang)}</a>
-          <a href="#faq">{t(footerCopy.navFaq, lang)}</a>
-          <a href="/licence">Licence</a>
+          <Link href="/plans">{t(footerCopy.navPlans, lang)}</Link>
+          <Link href="/#advisor">{t(footerCopy.navAdvisor, lang)}</Link>
+          <Link href="/#contact">{t(footerCopy.navContact, lang)}</Link>
+          <Link href="/#faq">{t(footerCopy.navFaq, lang)}</Link>
+          <Link href="/licence">Licence</Link>
         </div>
 
         {/* Contact column */}

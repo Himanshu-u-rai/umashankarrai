@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { advisor, hasWhatsApp, headerCopy, whatsappLink } from "../data/siteData";
 import { t } from "../data/i18n";
@@ -12,6 +13,7 @@ import HindiToggle from "./HindiToggle";
 // owned by app/globals.css (≥1080px).
 export default function Header() {
   const { lang } = useLang();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,14 +25,22 @@ export default function Header() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const isHome = pathname === "/";
+  const contactHref = isHome ? "#contact" : "/#contact";
+  const sectionHref = (href) => (isHome || !href.startsWith("#") ? href : `/${href}`);
 
   const talkHref = hasWhatsApp
     ? whatsappLink(t(headerCopy.whatsappGreeting, lang) || "Hello")
-    : "#contact";
+    : contactHref;
 
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a className="brand-lockup" href="#top" aria-label="Go to top" onClick={closeMenu}>
+      <a
+        className="brand-lockup"
+        href={isHome ? "#top" : "/"}
+        aria-label={isHome ? "Go to top" : "Go to home"}
+        onClick={closeMenu}
+      >
         <strong>{advisor.name}</strong>
       </a>
 
@@ -65,7 +75,7 @@ export default function Header() {
         aria-modal={menuOpen ? "true" : undefined}
       >
         {headerCopy.navLinks.map((item) => (
-          <a key={item.href} href={item.href} onClick={closeMenu}>
+          <a key={item.href} href={sectionHref(item.href)} onClick={closeMenu}>
             {t(item.label, lang)}
           </a>
         ))}

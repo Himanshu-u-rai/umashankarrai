@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight, ArrowUpRight, ArrowLeft,
@@ -49,18 +50,16 @@ export default function Plans() {
   const activeCategory = planCategories.find((c) => c.id === activeId) ?? null;
   const selectCtaLabel = t(planCategoriesCopy.selectCta, lang);
 
-  const selectPlan = (planName) => {
-    if (typeof window === "undefined") return;
-    window.dispatchEvent(new CustomEvent("plan-selected", { detail: planName }));
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <section className="section plan-guide" id="plans">
       <Reveal>
         <div className="plan-guide-heading">
           <h2>{t(plansSectionCopy.heading, lang)}</h2>
           <p>{t(plansSectionCopy.intro, lang)}</p>
+          <Link className="pc-directory-link" href="/plans">
+            {t(planCategoriesCopy.allPlansCta, lang)}
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
         </div>
       </Reveal>
 
@@ -147,7 +146,7 @@ export default function Plans() {
                       <span className="plan-chip">{plan.planNo}</span>
                       <span className="pc-plan-type">{plan.type}</span>
                     </div>
-                    <strong className="pc-plan-name">{plan.name}</strong>
+                    <strong className="pc-plan-name">{t(plan.nameCopy ?? plan.name, lang)}</strong>
                     <span className="pc-plan-benefit">{plan.benefit}</span>
                     <div className="pc-plan-meta">
                       <span className="plan-uin">UIN: {plan.uin}</span>
@@ -162,13 +161,9 @@ export default function Plans() {
                         <ArrowUpRight size={11} />
                       </a>
                     </div>
-                    <button
-                      type="button"
-                      className="button button-primary pc-plan-cta"
-                      onClick={() => selectPlan(plan.name)}
-                    >
+                    <Link className="button button-primary pc-plan-cta" href={`/plans/${plan.slug}`}>
                       {selectCtaLabel} <ArrowRight size={14} />
-                    </button>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
@@ -182,6 +177,29 @@ export default function Plans() {
 
       <style>{`
         .pc-wrap { max-width: 880px; margin: 0 auto; }
+
+        .pc-directory-link {
+          min-height: 42px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: min(100%, 230px);
+          margin-top: 20px;
+          border: 1px solid rgba(0, 44, 119, 0.18);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.72);
+          color: var(--lic-blue);
+          font-size: 13px;
+          font-weight: 900;
+          box-shadow: 0 10px 26px rgba(14, 19, 32, 0.05);
+          transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+        }
+        .pc-directory-link:hover {
+          border-color: rgba(255, 139, 31, 0.55);
+          background: #fff;
+          transform: translateY(-1px);
+        }
 
         /* ── Grid: 2×2 ── */
         .pc-grid {
@@ -352,6 +370,7 @@ export default function Plans() {
           min-height: 34px;
           font-size: 12px;
           padding: 5px 14px;
+          text-decoration: none;
         }
 
         .pc-source {
@@ -360,6 +379,17 @@ export default function Plans() {
           color: var(--muted);
           border-top: 1px solid var(--line);
           background: var(--paper);
+        }
+
+        @media (max-width: 520px) {
+          .pc-directory-link {
+            width: 100%;
+            min-height: 46px;
+          }
+          .pc-plan-cta {
+            width: 100%;
+            min-height: 42px;
+          }
         }
       `}</style>
     </section>

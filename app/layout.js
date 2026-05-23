@@ -1,6 +1,7 @@
 import { Cormorant_Garamond, Hind, Manrope } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "./components/LangProvider";
+import BackToTop from "./components/BackToTop";
 import { advisor, faqsCopy } from "./data/siteData";
 
 // Latin + Devanagari subset on the variable body font so Hindi renders
@@ -188,7 +189,10 @@ export default function RootLayout({ children }) {
       className={`${manrope.variable} ${cormorant.variable} ${hind.variable}`}
     >
       <body>
-        <LangProvider>{children}</LangProvider>
+        <LangProvider>
+          {children}
+          <BackToTop />
+        </LangProvider>
         {structured.map((schema, index) => (
           <script
             key={`ld-${index}`}
