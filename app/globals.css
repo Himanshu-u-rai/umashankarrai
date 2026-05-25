@@ -100,10 +100,46 @@ input,
 select,
 textarea {
   font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+}
+
+select,
+button,
+input,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 button {
   cursor: pointer;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.theme-select-trigger:focus-visible,
+.theme-select-option:focus-visible {
+  outline: 3px solid rgba(255, 139, 31, 0.36);
+  outline-offset: 3px;
 }
 
 h1,
@@ -121,6 +157,154 @@ h2 {
 
 main {
   min-width: 0;
+}
+
+/* ==========================================================================
+   Shared themed form controls
+   ========================================================================== */
+.theme-select {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.theme-select-trigger {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-bottom: 1px solid rgba(14, 19, 32, 0.24);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
+    transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  padding: 8px 0;
+  text-align: left;
+  text-transform: none;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.theme-select-trigger:hover,
+.theme-select.is-open .theme-select-trigger {
+  border-bottom-color: var(--lic-saffron);
+  color: var(--lic-blue);
+}
+
+.theme-select-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.theme-select-icon {
+  flex: 0 0 auto;
+  color: var(--lic-saffron);
+  transition: transform 180ms ease;
+}
+
+.theme-select.is-open .theme-select-icon {
+  transform: rotate(180deg);
+}
+
+.theme-select-menu {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: min(320px, 56vh);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(14, 19, 32, 0.12);
+  border-radius: 16px;
+  background: rgba(251, 248, 242, 0.98);
+  box-shadow: 0 18px 46px rgba(14, 19, 32, 0.16);
+  padding: 8px;
+  backdrop-filter: blur(18px);
+}
+
+.theme-select-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.theme-select-menu::-webkit-scrollbar-track {
+  background: rgba(0, 44, 119, 0.06);
+  border-radius: 999px;
+}
+
+.theme-select-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 44, 119, 0.24);
+  border-radius: 999px;
+}
+
+.theme-select-group + .theme-select-group {
+  border-top: 1px solid rgba(14, 19, 32, 0.08);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.theme-select-group-label {
+  color: var(--lic-saffron);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  padding: 8px 10px 5px;
+  text-transform: uppercase;
+}
+
+.theme-select-option {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(14, 19, 32, 0.82);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.35;
+  padding: 9px 10px;
+  text-align: left;
+  text-transform: none;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.theme-select-option span {
+  min-width: 0;
+}
+
+.theme-select-option:hover,
+.theme-select-option.is-active {
+  background: var(--lic-blue-soft);
+  color: var(--lic-blue);
+}
+
+.theme-select-option.is-selected {
+  background: rgba(255, 139, 31, 0.14);
+  color: var(--ink);
+}
+
+.theme-select-option svg {
+  flex: 0 0 auto;
+  color: var(--lic-saffron);
 }
 
 /* ==========================================================================
@@ -1290,6 +1474,28 @@ main {
 .contact-form select:focus,
 .contact-form textarea:focus {
   color: var(--ink);
+}
+
+.contact-form .theme-select {
+  margin-top: 1px;
+}
+
+.contact-form .theme-select-trigger {
+  min-height: 44px;
+  border-bottom: 0;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 6px 0 4px;
+}
+
+.contact-form .theme-select-trigger:hover,
+.contact-form .theme-select.is-open .theme-select-trigger {
+  color: var(--ink);
+}
+
+.contact-form .theme-select-menu {
+  top: calc(100% + 4px);
 }
 
 /* Custom chevron for select — dark ink on paper */

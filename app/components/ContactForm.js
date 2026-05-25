@@ -16,6 +16,7 @@ import {
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
 import Reveal from "./Reveal";
+import ThemedSelect from "./ThemedSelect";
 
 const initialForm = {
   name: "",
@@ -79,6 +80,18 @@ export default function ContactForm() {
   };
 
   const whatsappFastHref = whatsappLink(t(contactFormCopy.whatsAppFast, lang) || "Hello");
+  const planSelectGroups = planCategories.map((category) => ({
+    label: category.label,
+    options: category.plans.map((plan) => ({
+      value: plan.name,
+      label: `${plan.name} - ${plan.planNo}`,
+    })),
+  }));
+  const timeOptions = [
+    { value: "Morning", label: t(contactFormCopy.timeMorning, lang) },
+    { value: "Afternoon", label: t(contactFormCopy.timeAfternoon, lang) },
+    { value: "Evening", label: t(contactFormCopy.timeEvening, lang) },
+  ];
 
   return (
     <section className="section contact-section" id="contact">
@@ -171,17 +184,12 @@ export default function ContactForm() {
 
           <label>
             {t(contactFormCopy.fieldPlan, lang)}
-            <select value={form.plan} onChange={updateField("plan")}>
-              {planCategories.map((category) => (
-                <optgroup key={category.id} label={category.label}>
-                  {category.plans.map((plan) => (
-                    <option key={plan.uin} value={plan.name}>
-                      {plan.name} — {plan.planNo}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
+            <ThemedSelect
+              ariaLabel={t(contactFormCopy.fieldPlan, lang)}
+              groups={planSelectGroups}
+              value={form.plan}
+              onChange={updateField("plan")}
+            />
           </label>
 
           <fieldset className="contact-radio-group">
@@ -208,11 +216,12 @@ export default function ContactForm() {
 
           <label>
             {t(contactFormCopy.fieldPreferredTime, lang)}
-            <select value={form.preferredTime} onChange={updateField("preferredTime")}>
-              <option value="Morning">{t(contactFormCopy.timeMorning, lang)}</option>
-              <option value="Afternoon">{t(contactFormCopy.timeAfternoon, lang)}</option>
-              <option value="Evening">{t(contactFormCopy.timeEvening, lang)}</option>
-            </select>
+            <ThemedSelect
+              ariaLabel={t(contactFormCopy.fieldPreferredTime, lang)}
+              options={timeOptions}
+              value={form.preferredTime}
+              onChange={updateField("preferredTime")}
+            />
           </label>
 
           <label>

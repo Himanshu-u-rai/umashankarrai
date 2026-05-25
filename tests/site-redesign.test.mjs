@@ -131,6 +131,44 @@ test("contact form opens an encoded mail draft without a backend dependency", ()
   assert.match(read("app/components/Footer.js"), /\.ft-contact-link/, "footer contact links should have their own mobile spacing");
 });
 
+test("visible form controls use the site control system instead of browser defaults", () => {
+  const themedSelectPath = new URL("../app/components/ThemedSelect.js", import.meta.url);
+  assert.ok(existsSync(themedSelectPath), "site should have a reusable themed select component");
+
+  const themedSelect = read("app/components/ThemedSelect.js");
+  const contactForm = read("app/components/ContactForm.js");
+  const calculator = read("app/components/PlanCalculatorPanel.js");
+  const quoteForm = read("app/components/PlanQuoteForm.js");
+  const css = read("app/globals.css");
+  const planCss = read("app/plans/plans.module.css");
+
+  assert.match(themedSelect, /role="listbox"/, "themed dropdown should expose listbox semantics");
+  assert.match(themedSelect, /aria-expanded=\{open\}/, "dropdown trigger should expose open state");
+  assert.match(themedSelect, /ArrowDown/, "dropdown should support keyboard navigation");
+  assert.match(
+    themedSelect,
+    /typeof option !== "object"/,
+    "dropdown options should support primitive calculator values like booleans and numbers"
+  );
+  assert.match(
+    themedSelect,
+    /String\(option\.value\) === currentValue/,
+    "dropdown should match native form value behavior for boolean-like strings"
+  );
+  assert.match(contactForm, /ThemedSelect/, "homepage contact form should use the themed dropdown");
+  assert.ok(!contactForm.includes("<select"), "homepage contact form should not render native select controls");
+  assert.match(calculator, /ThemedSelect/, "calculator quote inputs should use the themed dropdown");
+  assert.ok(!calculator.includes("<select"), "calculator should not render native select controls");
+  assert.match(quoteForm, /ThemedSelect/, "plan quote form should use the themed dropdown");
+  assert.ok(!quoteForm.includes("<select"), "plan quote form should not render native select controls");
+  assert.match(css, /\.theme-select-trigger/, "themed select trigger should be styled globally");
+  assert.match(css, /\.theme-select-menu/, "themed select menu should be styled globally");
+  assert.match(css, /appearance:\s*none/, "browser-native control appearance should be reset");
+  assert.match(css, /input\[type="number"\]::-webkit-outer-spin-button/, "number spinners should be removed");
+  assert.match(planCss, /::-webkit-slider-thumb/, "calculator slider thumb should be custom styled");
+  assert.match(planCss, /::-moz-range-thumb/, "Firefox slider thumb should be custom styled");
+});
+
 test("trust section reads as an advisor promise instead of a metrics dashboard", () => {
   const trust = read("app/components/TrustSignals.js");
   const css = read("app/globals.css");

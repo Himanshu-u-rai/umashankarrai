@@ -6,6 +6,7 @@ import { advisor, hasWhatsApp, mailtoLink, whatsappLink } from "../data/siteData
 import { officialPlansCopy } from "../data/officialPlans";
 import { t } from "../data/i18n";
 import { useLang } from "./LangProvider";
+import ThemedSelect from "./ThemedSelect";
 import styles from "../plans/plans.module.css";
 
 const initialForm = {
@@ -50,6 +51,11 @@ export default function PlanQuoteForm({ plan }) {
   const whatsappHref = whatsappLink(
     `Hello ${advisor.name}, I want to know more about ${planDisplayName} (${plan.planNo}).`
   );
+  const timeOptions = [
+    { value: "Morning", label: t(officialPlansCopy.morning, lang) },
+    { value: "Afternoon", label: t(officialPlansCopy.afternoon, lang) },
+    { value: "Evening", label: t(officialPlansCopy.evening, lang) },
+  ];
 
   return (
     <section className={styles.quotePanel} id="quote" aria-labelledby="quote-heading">
@@ -80,11 +86,12 @@ export default function PlanQuoteForm({ plan }) {
         </label>
         <label>
           {t(officialPlansCopy.preferredTime, lang)}
-          <select value={form.preferredTime} onChange={updateField("preferredTime")}>
-            <option value="Morning">{t(officialPlansCopy.morning, lang)}</option>
-            <option value="Afternoon">{t(officialPlansCopy.afternoon, lang)}</option>
-            <option value="Evening">{t(officialPlansCopy.evening, lang)}</option>
-          </select>
+          <ThemedSelect
+            ariaLabel={t(officialPlansCopy.preferredTime, lang)}
+            options={timeOptions}
+            value={form.preferredTime}
+            onChange={updateField("preferredTime")}
+          />
         </label>
         <label>
           {t(officialPlansCopy.message, lang)}

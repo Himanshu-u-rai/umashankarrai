@@ -5,12 +5,22 @@ export const officialPlanSources = {
   insurance: {
     label: tx("LIC official insurance plans", "एलआईसी आधिकारिक बीमा योजनाएँ"),
     url: `${LIC_BASE_URL}/insurance-plan`,
-    updated: "01 Apr 2026",
+    updated: "24 May 2026",
   },
   pension: {
     label: tx("LIC official pension plans", "एलआईसी आधिकारिक पेंशन योजनाएँ"),
     url: `${LIC_BASE_URL}/pension-plan`,
     updated: "17 Feb 2026",
+  },
+  unitLinked: {
+    label: tx("LIC official unit linked plans", "एलआईसी आधिकारिक यूनिट लिंक्ड योजनाएँ"),
+    url: `${LIC_BASE_URL}/unit-linked-plans`,
+    updated: "12 Jan 2026",
+  },
+  micro: {
+    label: tx("LIC official micro insurance plans", "एलआईसी आधिकारिक माइक्रो बीमा योजनाएँ"),
+    url: `${LIC_BASE_URL}/micro-insurance-plans`,
+    updated: "15 Oct 2025",
   },
   calculatorReference: {
     label: tx("LIC calculator UX reference", "एलआईसी कैलकुलेटर संदर्भ"),
@@ -53,8 +63,8 @@ export const officialPlansCopy = {
   relatedPlans: tx("Related official LIC plans.", "संबंधित आधिकारिक एलआईसी योजनाएँ।"),
   calculatorReference: tx("Calculator reference", "कैलकुलेटर संदर्भ"),
   quoteInputs: tx("Quote inputs", "कोट जानकारी"),
-  officialRateAvailable: tx("Official rate table available", "आधिकारिक रेट टेबल उपलब्ध"),
-  pendingRate: tx("Verified official rate table pending", "सत्यापित आधिकारिक रेट टेबल लंबित"),
+  officialRateAvailable: tx("Extracted calculator data available", "निकाला गया कैलकुलेटर डेटा उपलब्ध"),
+  pendingRate: tx("Exact quote required", "सटीक कोट आवश्यक"),
   notApplicable: tx("Standalone calculator not applicable", "अलग कैलकुलेटर लागू नहीं"),
   calculatorNotice: tx(
     "This page will not generate premium or maturity figures without a verified official rate table. Share your inputs with Umashankar Rai for an exact LIC quote.",
@@ -138,6 +148,19 @@ const calculatorFields = {
     "Deferment period if applicable",
     "Payout mode",
   ],
+  "unit-linked": [
+    "Age nearest birthday",
+    "Annual premium or contribution",
+    "Policy term",
+    "Fund preference",
+    "Premium mode",
+  ],
+  micro: [
+    "Age nearest birthday",
+    "Basic sum assured",
+    "Policy term",
+    "Premium mode",
+  ],
 };
 
 export const calculatorFieldCopy = {
@@ -157,9 +180,11 @@ export const calculatorFieldCopy = {
   "Required rider": tx("Required rider", "आवश्यक राइडर"),
   "Base sum assured": tx("Base sum assured", "आधार बीमा राशि"),
   "Purchase price or contribution": tx("Purchase price or contribution", "खरीद राशि या योगदान"),
+  "Annual premium or contribution": tx("Annual premium or contribution", "वार्षिक प्रीमियम या योगदान"),
   "Annuity option": tx("Annuity option", "एन्युटी विकल्प"),
   "Deferment period if applicable": tx("Deferment period if applicable", "लागू हो तो स्थगन अवधि"),
   "Payout mode": tx("Payout mode", "भुगतान मोड"),
+  "Fund preference": tx("Fund preference", "फंड पसंद"),
 };
 
 const groupDefaults = {
@@ -253,6 +278,36 @@ const groupDefaults = {
       tx("Exact annuity or premium values require official LIC rate data.", "सटीक एन्युटी या प्रीमियम राशि के लिए आधिकारिक एलआईसी रेट डेटा चाहिए।"),
     ],
   },
+  "unit-linked": {
+    summary: tx(
+      "LIC unit-linked product where premium allocation, fund choice, and market value drive the illustration.",
+      "एलआईसी यूनिट-लिंक्ड उत्पाद, जहाँ प्रीमियम एलोकेशन, फंड चुनाव और बाजार मूल्य चित्रण को प्रभावित करते हैं।"
+    ),
+    features: [
+      tx("Review premium allocation, fund options, policy charges, and risk profile", "प्रीमियम एलोकेशन, फंड विकल्प, पॉलिसी चार्ज और जोखिम प्रोफाइल देखें"),
+      tx("Market-linked values are not guaranteed and need current NAV-based illustration", "मार्केट-लिंक्ड मूल्य गारंटीड नहीं होते और मौजूदा NAV आधारित चित्रण चाहिए"),
+      tx("Use advisor guidance before comparing with traditional plans", "ट्रेडिशनल योजनाओं से तुलना से पहले सलाहकार मार्गदर्शन लें"),
+    ],
+    eligibility: [
+      tx("Entry age, premium amount, policy term, and fund options vary by product.", "प्रवेश उम्र, प्रीमियम राशि, पॉलिसी अवधि और फंड विकल्प उत्पाद के अनुसार बदलते हैं।"),
+      tx("Exact values require current LIC charges, fund values, and official illustration rules.", "सटीक मूल्य के लिए मौजूदा एलआईसी चार्ज, फंड वैल्यू और आधिकारिक चित्रण नियम चाहिए।"),
+    ],
+  },
+  micro: {
+    summary: tx(
+      "LIC micro insurance product for smaller-ticket protection and savings needs.",
+      "छोटी राशि की सुरक्षा और बचत आवश्यकताओं के लिए एलआईसी माइक्रो बीमा उत्पाद।"
+    ),
+    features: [
+      tx("Review sum assured limits, premium mode, and simple eligibility rules", "बीमा राशि सीमा, प्रीमियम मोड और सरल पात्रता नियम देखें"),
+      tx("Check whether the product suits low-ticket protection or savings goals", "यह जाँचें कि उत्पाद छोटी राशि की सुरक्षा या बचत लक्ष्य के लिए उपयुक्त है या नहीं"),
+      tx("Confirm final premium and document requirements with the advisor", "अंतिम प्रीमियम और दस्तावेज़ आवश्यकताएँ सलाहकार से पुष्टि करें"),
+    ],
+    eligibility: [
+      tx("Age, sum assured, and payment mode vary by product.", "उम्र, बीमा राशि और भुगतान मोड उत्पाद के अनुसार बदलते हैं।"),
+      tx("Final quote should be verified against current LIC rules.", "अंतिम कोट मौजूदा एलआईसी नियमों से सत्यापित होना चाहिए।"),
+    ],
+  },
 };
 
 const productSummaries = {
@@ -291,6 +346,14 @@ const productSummaries = {
   "lic-bima-lakshmi-881": tx(
     "Endowment category product; confirm current eligibility, premium mode, and benefit details from LIC.",
     "एंडोमेंट श्रेणी उत्पाद; मौजूदा पात्रता, प्रीमियम मोड और लाभ विवरण एलआईसी से पुष्टि करें।"
+  ),
+  "lic-new-jeevan-sathi-single-premium-888": tx(
+    "Single-premium endowment product for joint-life planning; review the current LIC illustration before purchase.",
+    "जॉइंट-लाइफ योजना के लिए सिंगल प्रीमियम एंडोमेंट उत्पाद; खरीद से पहले मौजूदा एलआईसी चित्रण देखें।"
+  ),
+  "lic-new-jeevan-sathi-limited-premium-889": tx(
+    "Limited-premium endowment product for joint-life planning; confirm eligibility, term, and premium details from LIC.",
+    "जॉइंट-लाइफ योजना के लिए लिमिटेड प्रीमियम एंडोमेंट उत्पाद; पात्रता, अवधि और प्रीमियम विवरण एलआईसी से पुष्टि करें।"
   ),
   "lic-jeevan-umang-745": tx(
     "Whole life category product with long-duration cover; review income and maturity-related terms from LIC.",
@@ -384,6 +447,30 @@ const productSummaries = {
     "Female critical illness rider; review covered conditions and attachment rules.",
     "महिला गंभीर बीमारी राइडर; कवर शर्तें और जोड़ने के नियम देखें।"
   ),
+  "lic-index-plus-873": tx(
+    "Unit-linked product with market-linked fund value; exact projection depends on current charges and fund performance.",
+    "मार्केट-लिंक्ड फंड वैल्यू वाला यूनिट-लिंक्ड उत्पाद; सटीक प्रोजेक्शन मौजूदा चार्ज और फंड प्रदर्शन पर निर्भर करता है।"
+  ),
+  "lic-nivesh-plus-749": tx(
+    "Unit-linked product for investment-linked planning; review allocation charges, fund options, and risk profile.",
+    "निवेश-लिंक्ड योजना के लिए यूनिट-लिंक्ड उत्पाद; एलोकेशन चार्ज, फंड विकल्प और जोखिम प्रोफाइल देखें।"
+  ),
+  "lic-siip-752": tx(
+    "Unit-linked insurance product; values depend on selected fund, charges, and market performance.",
+    "यूनिट-लिंक्ड बीमा उत्पाद; मूल्य चुने गए फंड, चार्ज और बाजार प्रदर्शन पर निर्भर करते हैं।"
+  ),
+  "lic-protection-plus-886": tx(
+    "Unit-linked protection product; compare life cover, premium allocation, and fund options.",
+    "यूनिट-लिंक्ड सुरक्षा उत्पाद; जीवन कवर, प्रीमियम एलोकेशन और फंड विकल्प की तुलना करें।"
+  ),
+  "lic-micro-bachat-751": tx(
+    "Micro insurance product for smaller-ticket savings with life cover.",
+    "जीवन कवर के साथ छोटी राशि की बचत के लिए माइक्रो बीमा उत्पाद।"
+  ),
+  "lic-jan-suraksha-880": tx(
+    "Micro insurance product for basic protection planning with compact eligibility checks.",
+    "सरल पात्रता जाँच के साथ बुनियादी सुरक्षा योजना के लिए माइक्रो बीमा उत्पाद।"
+  ),
   "lic-new-pension-plus-867": tx(
     "Pension product for retirement accumulation; review contribution, fund, and vesting conditions.",
     "सेवानिवृत्ति संचय के लिए पेंशन उत्पाद; योगदान, फंड और वेस्टिंग शर्तें देखें।"
@@ -416,6 +503,8 @@ const productNameCopy = {
   "lic-bima-jyoti-760": tx("LIC's Bima Jyoti", "एलआईसी बीमा ज्योति"),
   "lic-nav-jeevan-shree-912": tx("LIC's Nav Jeevan Shree", "एलआईसी नव जीवन श्री"),
   "lic-bima-lakshmi-881": tx("LIC's Bima Lakshmi", "एलआईसी बीमा लक्ष्मी"),
+  "lic-new-jeevan-sathi-single-premium-888": tx("LIC's New Jeevan Sathi (Single Premium)", "एलआईसी न्यू जीवन साथी (सिंगल प्रीमियम)"),
+  "lic-new-jeevan-sathi-limited-premium-889": tx("LIC's New Jeevan Sathi (Limited Premium)", "एलआईसी न्यू जीवन साथी (लिमिटेड प्रीमियम)"),
   "lic-jeevan-umang-745": tx("LIC's Jeevan Umang", "एलआईसी जीवन उमंग"),
   "lic-jeevan-utsav-771": tx("LIC's Jeevan Utsav", "एलआईसी जीवन उत्सव"),
   "lic-jeevan-utsav-single-premium-883": tx("LIC's Jeevan Utsav Single Premium", "एलआईसी जीवन उत्सव सिंगल प्रीमियम"),
@@ -439,6 +528,12 @@ const productNameCopy = {
   "lic-linked-accidental-death-benefit-rider": tx("LIC's Linked Accidental Death Benefit Rider", "एलआईसी लिंक्ड एक्सीडेंटल डेथ बेनिफिट राइडर"),
   "lic-critical-illness-health-rider": tx("LIC's Critical Illness Health Rider", "एलआईसी क्रिटिकल इलनेस हेल्थ राइडर"),
   "lic-female-critical-illness-benefit-rider": tx("LIC's Female Critical Illness Benefit Rider", "एलआईसी फीमेल क्रिटिकल इलनेस बेनिफिट राइडर"),
+  "lic-index-plus-873": tx("LIC's Index Plus", "एलआईसी इंडेक्स प्लस"),
+  "lic-nivesh-plus-749": tx("LIC's Nivesh Plus", "एलआईसी निवेश प्लस"),
+  "lic-siip-752": tx("LIC's SIIP", "एलआईसी एसआईआईपी"),
+  "lic-protection-plus-886": tx("LIC's Protection Plus", "एलआईसी प्रोटेक्शन प्लस"),
+  "lic-micro-bachat-751": tx("LIC's Micro Bachat", "एलआईसी माइक्रो बचत"),
+  "lic-jan-suraksha-880": tx("LIC's Jan Suraksha", "एलआईसी जन सुरक्षा"),
   "lic-new-pension-plus-867": tx("LIC's New Pension Plus", "एलआईसी न्यू पेंशन प्लस"),
   "lic-jeevan-akshay-vii-857": tx("LIC's Jeevan Akshay-VII", "एलआईसी जीवन अक्षय-VII"),
   "lic-new-jeevan-shanti-758": tx("LIC's New Jeevan Shanti", "एलआईसी न्यू जीवन शांति"),
@@ -522,6 +617,8 @@ const insuranceGroups = [
       ["LIC's Bima Jyoti", "760", "512N339V03", "lic-bima-jyoti-760", "/web/guest/lic-s-bima-jyoti-new"],
       ["LIC's Nav Jeevan Shree", "912", "512N387V02", "lic-nav-jeevan-shree-912", "/web/guest/lic-s-nav-jeevan-shree-plan-no.912-1"],
       ["LIC's Bima Lakshmi", "881", "512N389V01", "lic-bima-lakshmi-881", "/web/guest/lic-s-bima-lakshmi-881-512n389v01"],
+      ["LIC's New Jeevan Sathi (Single Premium)", "888", "512N393V01", "lic-new-jeevan-sathi-single-premium-888", "/web/guest/lic-s-new-jeevan-sathi-single-premium"],
+      ["LIC's New Jeevan Sathi (Limited Premium)", "889", "512N394V01", "lic-new-jeevan-sathi-limited-premium-889", "/web/guest/lic-s-new-jeevan-sathi-limited-premium"],
     ],
   },
   {
@@ -601,6 +698,18 @@ const pensionProducts = [
   ["LIC's Smart Pension", "879", "512N386V01", "lic-smart-pension-879", "/web/guest/lic-s-smart-pension"],
 ];
 
+const unitLinkedProducts = [
+  ["LIC's Index Plus", "873", "512L354V01", "lic-index-plus-873", "/unit-linked-plans"],
+  ["LIC's Nivesh Plus", "749", "512L317V02", "lic-nivesh-plus-749", "/unit-linked-plans"],
+  ["LIC's SIIP", "752", "512L334V02", "lic-siip-752", "/unit-linked-plans"],
+  ["LIC's Protection Plus", "886", "512L361V01", "lic-protection-plus-886", "/unit-linked-plans"],
+];
+
+const microInsuranceProducts = [
+  ["LIC's Micro Bachat", "751", "512N329V03", "lic-micro-bachat-751", "/micro-insurance-plans"],
+  ["LIC's Jan Suraksha", "880", "512N388V01", "lic-jan-suraksha-880", "/micro-insurance-plans"],
+];
+
 function normalizePlan(group, item, index, source) {
   const [name, planNo, uin, slug, path] = item;
   const defaults = groupDefaults[group.id];
@@ -658,7 +767,50 @@ export const pensionPlanGroup = {
   ),
 };
 
-export const officialPlanGroups = [...officialInsurancePlanGroups, pensionPlanGroup];
+export const unitLinkedPlanGroup = {
+  id: "unit-linked",
+  title: "Unit Linked Plans",
+  titleCopy: tx("Unit Linked Plans", "यूनिट लिंक्ड प्लान्स"),
+  description: tx(
+    "LIC market-linked products where values depend on fund choice, policy charges, and current NAV.",
+    "एलआईसी मार्केट-लिंक्ड उत्पाद, जिनमें मूल्य फंड चुनाव, पॉलिसी चार्ज और मौजूदा NAV पर निर्भर करते हैं।"
+  ),
+  source: officialPlanSources.unitLinked,
+  plans: unitLinkedProducts.map((item, index) =>
+    normalizePlan(
+      { id: "unit-linked", title: "Unit Linked Plans", titleCopy: tx("Unit Linked Plans", "यूनिट लिंक्ड प्लान्स") },
+      item,
+      index,
+      officialPlanSources.unitLinked
+    )
+  ),
+};
+
+export const microInsurancePlanGroup = {
+  id: "micro",
+  title: "Micro Insurance Plans",
+  titleCopy: tx("Micro Insurance Plans", "माइक्रो बीमा प्लान्स"),
+  description: tx(
+    "LIC smaller-ticket insurance products for basic protection and savings needs.",
+    "बुनियादी सुरक्षा और बचत जरूरतों के लिए एलआईसी की छोटी राशि वाली बीमा योजनाएँ।"
+  ),
+  source: officialPlanSources.micro,
+  plans: microInsuranceProducts.map((item, index) =>
+    normalizePlan(
+      { id: "micro", title: "Micro Insurance Plans", titleCopy: tx("Micro Insurance Plans", "माइक्रो बीमा प्लान्स") },
+      item,
+      index,
+      officialPlanSources.micro
+    )
+  ),
+};
+
+export const officialPlanGroups = [
+  ...officialInsurancePlanGroups,
+  pensionPlanGroup,
+  unitLinkedPlanGroup,
+  microInsurancePlanGroup,
+];
 
 export const allOfficialPlans = officialPlanGroups.flatMap((group) => group.plans);
 
@@ -669,6 +821,8 @@ export const officialPlanStats = {
     0
   ),
   pensionPlanCount: pensionPlanGroup.plans.length,
+  unitLinkedPlanCount: unitLinkedPlanGroup.plans.length,
+  microInsurancePlanCount: microInsurancePlanGroup.plans.length,
   totalPlanCount: allOfficialPlans.length,
 };
 

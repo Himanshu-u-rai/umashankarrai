@@ -431,6 +431,10 @@
   text-transform: uppercase;
 }
 
+.fieldLabelText {
+  display: block;
+}
+
 .calculatorForm input,
 .calculatorForm select,
 .quoteForm input,
@@ -449,6 +453,115 @@
   outline: none;
   padding: 8px 0;
   text-transform: none;
+}
+
+.calculatorForm :global(.theme-select-trigger),
+.quoteForm :global(.theme-select-trigger) {
+  min-height: 46px;
+  border-bottom-color: rgba(14, 19, 32, 0.24);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.calculatorForm :global(.theme-select-menu),
+.quoteForm :global(.theme-select-menu) {
+  min-width: min(320px, 100%);
+}
+
+.rangeField {
+  grid-column: 1 / -1;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rangeControl {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rangeControl input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  accent-color: var(--lic-saffron);
+  cursor: pointer;
+}
+
+.rangeControl input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border: 1px solid rgba(0, 44, 119, 0.08);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0, 44, 119, 0.78), rgba(255, 139, 31, 0.82));
+  box-shadow: inset 0 1px 2px rgba(14, 19, 32, 0.08);
+}
+
+.rangeControl input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fffdfa;
+  border-radius: 50%;
+  background: var(--lic-saffron);
+  box-shadow: 0 8px 16px rgba(255, 139, 31, 0.34);
+  margin-top: -7px;
+}
+
+.rangeControl input[type="range"]::-moz-range-track {
+  height: 6px;
+  border: 1px solid rgba(0, 44, 119, 0.08);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0, 44, 119, 0.78), rgba(255, 139, 31, 0.82));
+  box-shadow: inset 0 1px 2px rgba(14, 19, 32, 0.08);
+}
+
+.rangeControl input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fffdfa;
+  border-radius: 50%;
+  background: var(--lic-saffron);
+  box-shadow: 0 8px 16px rgba(255, 139, 31, 0.34);
+}
+
+.rangeControl input[type="range"]:focus-visible {
+  outline: 3px solid rgba(255, 139, 31, 0.3);
+  outline-offset: 4px;
+}
+
+.rangeNumberRow {
+  display: grid;
+  grid-template-columns: minmax(0, 72px) minmax(96px, 1fr) minmax(0, 82px);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.rangeNumberRow span {
+  color: rgba(91, 101, 119, 0.84);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.rangeNumberRow input[type="number"] {
+  min-height: 38px;
+  border: 1px solid rgba(14, 19, 32, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.78);
+  min-width: 0;
+  padding: 8px 10px;
+  text-align: center;
 }
 
 .quoteForm textarea {
@@ -507,6 +620,74 @@
   font-weight: 800;
 }
 
+.calculatorFootnote {
+  border-top: 1px solid rgba(14, 19, 32, 0.08);
+  color: rgba(91, 101, 119, 0.78);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 2px 0 0;
+  padding-top: 10px;
+  text-transform: none;
+}
+
+.calculatorResult {
+  display: grid;
+  gap: 14px;
+  border: 1px solid rgba(0, 44, 119, 0.12);
+  border-radius: 16px;
+  background: rgba(232, 238, 247, 0.58);
+  padding: 16px;
+}
+
+.resultHeader {
+  display: grid;
+  gap: 4px;
+}
+
+.resultHeader strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.resultHeader span,
+.emptyResult {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.resultGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.resultCard {
+  display: grid;
+  gap: 5px;
+  border-top: 1px solid rgba(14, 19, 32, 0.1);
+  padding-top: 12px;
+}
+
+.resultCard span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.resultCard strong {
+  color: var(--lic-blue);
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1;
+}
+
+.resultCard small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 @media (min-width: 720px) {
   .catalogueHero {
     grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
@@ -527,6 +708,10 @@
   }
 
   .fieldGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resultGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
